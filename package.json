@@ -1,0 +1,47 @@
+{
+  "name": "tokencreator.santiago.delvalle",
+  "version": "1.0.0",
+  "description": "Interface to launch an ERC20 token based on the Open Zeppelin Framework",
+  "main": "index.js",
+  "dependencies": {
+    "ganache-cli": "^6.1.6",
+    "gulp": "^3.9.1",
+    "mocha": "^5.2.0",
+    "next": "^4.2.0",
+    "next-routes": "^1.4.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "semantic-ui-react": "^0.82.1",
+    "truffle": "^4.1.13",
+    "truffle-hdwallet-provider-privkey": "^0.2.0",
+    "web3": "^1.0.0-beta.34"
+  },
+  "devDependencies": {
+    "semantic-ui": "^2.3.3"
+  },
+  "scripts": {
+    "test": "mocha",
+    "dev": "npm run build-semantic && next build && node server.js",
+    "dev_simple": "node server.js",
+    "stage": "next build && NODE_ENV=production node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "build-semantic": "cd static/semantic && gulp build-css build-assets",
+    "watch-semantic": "cd static/semantic && npm run build-semantic && gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdelvalle57/token_creation.git"
+  },
+  "keywords": [
+    "token",
+    "erc20",
+    "openzeppelin"
+  ],
+  "author": "Santiago Del Valle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdelvalle57/token_creation/issues"
+  },
+  "homepage": "https://github.com/sdelvalle57/token_creation#readme"
+}
