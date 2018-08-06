@@ -4,14 +4,15 @@
   "description": "Interface to launch an ERC20 token based on the Open Zeppelin Framework",
   "main": "index.js",
   "dependencies": {
-    "ganache-cli": "^6.1.6",
     "gulp": "^3.9.1",
-    "mocha": "^5.2.0",
-    "next": "^4.2.0",
+    "next": "^6.1.1",
     "next-routes": "^1.4.2",
+    "numeral": "^2.0.6",
     "react": "^16.4.2",
+    "react-center": "^1.1.1",
     "react-dom": "^16.4.2",
-    "semantic-ui-react": "^0.82.1",
+    "require-dot-file": "^0.4.0",
+    "semantic-ui-react": "^0.80.2",
     "truffle": "^4.1.13",
     "truffle-hdwallet-provider-privkey": "^0.2.0",
     "web3": "^1.0.0-beta.34"
@@ -26,8 +27,8 @@
     "stage": "next build && NODE_ENV=production node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "build-semantic": "cd static/semantic && gulp build-css build-assets",
-    "watch-semantic": "cd static/semantic && npm run build-semantic && gulp watch"
+    "build-semantic": "cd static && gulp build-css build-assets",
+    "watch-semantic": "cd static && npm run build-semantic && gulp watch"
   },
   "repository": {
     "type": "git",
