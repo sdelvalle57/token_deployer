@@ -1,0 +1,11 @@
+/*******************************
+         Site Overrides
+*******************************/
+.ui.form.indexForm {
+    width: 100%;
+}
+
+.ui.form.error.indexForm .error.message:not(:empty) {
+    position: absolute;
+    width: 750px;
+}

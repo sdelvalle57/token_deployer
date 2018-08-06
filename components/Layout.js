@@ -8,7 +8,7 @@ export default props => {
             <Head>
                 <link 
                     rel="stylesheet" 
-                    href="/static/semantic/dist/semantic.min.css"
+                    href="/static/dist/semantic.min.css"
                 />
             </Head>
             {props.children}

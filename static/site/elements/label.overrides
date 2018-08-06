@@ -1,0 +1,14 @@
+/*******************************
+         Site Overrides
+*******************************/
+.ui.blue.ribbon.label.tfRibbon {
+    top: -5px;
+}
+
+.ui.blue.ribbon.label.tfRibbon.show {
+    visibility: visible;
+}
+
+.ui.blue.ribbon.label.tfRibbon.hide {
+    visibility: hidden;
+}
