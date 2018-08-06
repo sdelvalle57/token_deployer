@@ -10,6 +10,7 @@ contract TokenFactoryDataHolder {
 
     struct Prices {
         uint256 standardERC20price;
+        //one change
     } 
 
     enum TokenType {
