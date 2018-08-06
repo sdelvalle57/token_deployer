@@ -1,23 +1,43 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.4.24;
 
-import "../../utils/Ownable.sol";
 import "../../utils/SafeMath.sol";
 
 /**
  * @title Contract to hold long term persistent data
  */
-contract TokenFactoryDataHolder is Ownable {
+contract TokenFactoryDataHolder {
     using SafeMath for uint256;
+
+    struct Prices {
+        uint256 standardERC20price;
+    } 
+
+    enum TokenType {
+        BASIC_ERC20,
+        STANDARD_ERC20,
+        BURNABLE_ERC20,
+        PAUSABLE_ERC20,
+        MINTABLE_ERC20
+    }
+
+    uint256 constant public VERSION = 1;
 
     uint256 public fundsRaised;
     uint256 public fundsWithdrawn;
+
     address public tokenFactoryImpl;
+
     address[] public basicTokensDeployed;
     address[] public standardTokensDeployed;
     address[] public users;
 
+    Prices public prices;
+
+    mapping (address => TokenType) public token;
+    mapping (address => address[]) public contracts;
+
     modifier onlyImplementation() {
-        require(msg.sender == owner);
+        require(msg.sender == tokenFactoryImpl);
         _;
     }
 
@@ -29,25 +49,38 @@ contract TokenFactoryDataHolder is Ownable {
         tokenFactoryImpl = _tokenFactoryImpl;
     }
 
-    function addFundsRaised(uint256 _amount) public onlyImplementation() {
+    function addFunds(uint256 _amount) public onlyImplementation() {
         fundsRaised = fundsRaised.add(_amount);
     }
 
-    function withdraw(address _destinatary) public onlyImplementation() {
-        fundsWithdrawn = fundsWithdrawn.add(address(this).balance);
-        _destinatary.transfer(address(this).balance);
+    function withdraw(uint256 _amount) public onlyImplementation() {
+        fundsWithdrawn = fundsWithdrawn.add(_amount);
     }
 
-    function addBasicTokenDeployed(address _token) public onlyImplementation() {
-        basicTokensDeployed.push(_token);
-    }
-
-    function addStandardTokensDeployed(address _token) public onlyImplementation() {
-        standardTokensDeployed.push(_token);
-    }
-
-    function addUser(address _user) public onlyImplementation() {
+    function addBasicToken(address _user, address _token) public onlyImplementation() {
         users.push(_user);
+        basicTokensDeployed.push(_token);
+        token[_token] = TokenType.BASIC_ERC20;
+        contracts[_user].push(_token);
+    }
+
+    function addStandardToken(address _user, address _token) public onlyImplementation() {
+        users.push(_user);
+        standardTokensDeployed.push(_token);
+        token[_token] = TokenType.STANDARD_ERC20;
+        contracts[_user].push(_token);
+    }
+
+    function setStandardERC20Price(uint256 _standardERC20Price) public onlyImplementation() {
+        prices.standardERC20price = _standardERC20Price;
+    }
+
+    function getStandarERC20Price() public view returns (uint256)  {
+        return prices.standardERC20price;
+    }
+
+    function getContracts(address _user) public view returns (address[]) {
+        return contracts[_user];
     }
     
 }
