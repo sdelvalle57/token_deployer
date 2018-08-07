@@ -67,53 +67,37 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-<<<<<<< HEAD
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
-=======
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
->>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-<<<<<<< HEAD
-/***/ 22:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(23);
-=======
-/***/ 26:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(27);
->>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
-
-
-/***/ }),
-
-<<<<<<< HEAD
-/***/ 23:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(24)
-=======
-/***/ 27:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(28)
->>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
-
-
-/***/ }),
-
-<<<<<<< HEAD
-/***/ 24:
-=======
-/***/ 28:
->>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
+/***/ 0:
 /***/ (function(module, exports) {
 
-module.exports = require("next/document");
+module.exports = require("react");
+
+/***/ }),
+
+/***/ 12:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(13);
+
+
+/***/ }),
+
+/***/ 13:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h1", null, "This is show");
+});
 
 /***/ })
 

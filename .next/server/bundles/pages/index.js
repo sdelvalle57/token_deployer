@@ -67,7 +67,11 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+=======
 /******/ 	return __webpack_require__(__webpack_require__.s = 14);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -93,7 +97,11 @@ module.exports = require("semantic-ui-react");
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_numeral__ = __webpack_require__(9);
+=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_numeral__ = __webpack_require__(11);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_numeral___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_numeral__);
 
 
@@ -116,6 +124,13 @@ function isAddressValid(address) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
+throw new Error("Cannot find module \"../ethereum/api/web3\"");
+throw new Error("Cannot find module \"../ethereum/api/web3Socket\"");
+throw new Error("Cannot find module \"../ethereum/api/token\"");
+=======
 
 // EXTERNAL MODULE: external "@babel/runtime/regenerator"
 var regenerator_ = __webpack_require__(1);
@@ -177,6 +192,7 @@ function tokenAt(tokenAddress, web3) {
   return new web3.eth.Contract(TokenFactory_default.a.abi, tokenAddress);
 }
 // CONCATENATED MODULE: ./helpers/apiToken.js
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
@@ -195,15 +211,25 @@ function getSummary(_x, _x2) {
 function _getSummary() {
   _getSummary = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(tokenAddress, network) {
+    var summary, token;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+=======
   regenerator__default.a.mark(function _callee(tokenAddress, network) {
     var summary, token;
     return regenerator__default.a.wrap(function _callee$(_context) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             summary = {};
             _context.prev = 1;
+<<<<<<< HEAD
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_2__ethereum_api_web3Socket___default()(network));
+=======
             token = tokenAt(tokenAddress, web3Socket(network));
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             _context.next = 5;
             return token.methods.name().call();
 
@@ -249,13 +275,26 @@ function _getSummary() {
   return _getSummary.apply(this, arguments);
 }
 
+<<<<<<< HEAD
+function totalSupply(_x3) {
+=======
 function apiToken_totalSupply(_x3) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
   return _totalSupply.apply(this, arguments);
 }
 
 function _totalSupply() {
   _totalSupply = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee2(tokenAddress) {
+    var token, totalSupply;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_2__ethereum_api_web3Socket___default()(network));
+=======
   regenerator__default.a.mark(function _callee2(tokenAddress) {
     var token, totalSupply;
     return regenerator__default.a.wrap(function _callee2$(_context2) {
@@ -263,6 +302,7 @@ function _totalSupply() {
         switch (_context2.prev = _context2.next) {
           case 0:
             token = tokenAt(tokenAddress, web3Socket(network));
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             _context2.next = 3;
             return token.methods.totalSupply().call();
 
@@ -287,6 +327,15 @@ function balanceOf(_x4, _x5, _x6) {
 function _balanceOf() {
   _balanceOf = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee3(tokenAddress, who, network) {
+    var token, balance;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_2__ethereum_api_web3Socket___default()(network));
+=======
   regenerator__default.a.mark(function _callee3(tokenAddress, who, network) {
     var token, balance;
     return regenerator__default.a.wrap(function _callee3$(_context3) {
@@ -294,6 +343,7 @@ function _balanceOf() {
         switch (_context3.prev = _context3.next) {
           case 0:
             token = tokenAt(tokenAddress, web3Socket(network));
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             _context3.next = 3;
             return token.methods.balanceOf(who).call();
 
@@ -320,14 +370,24 @@ function transfer(_x7, _x8, _x9) {
 function _transfer() {
   _transfer = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee4(tokenAddress, to, value) {
+    var token, method, response;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+=======
   regenerator__default.a.mark(function _callee4(tokenAddress, to, value) {
     var token, method, response;
     return regenerator__default.a.wrap(function _callee4$(_context4) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             value = convertToWei(value);
+<<<<<<< HEAD
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_1__ethereum_api_web3___default.a);
+=======
             token = tokenAt(tokenAddress, api_web3);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             method = token.methods.transfer(to, value);
             _context4.next = 5;
             return sendTx(method);
@@ -346,13 +406,26 @@ function _transfer() {
   return _transfer.apply(this, arguments);
 }
 
+<<<<<<< HEAD
+function allowance(_x10, _x11, _x12, _x13) {
+=======
 function apiToken_allowance(_x10, _x11, _x12, _x13) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
   return _allowance.apply(this, arguments);
 }
 
 function _allowance() {
   _allowance = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee5(tokenAddress, owner, spender, network) {
+    var token, allowance;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_2__ethereum_api_web3Socket___default()(network));
+=======
   regenerator__default.a.mark(function _callee5(tokenAddress, owner, spender, network) {
     var token, allowance;
     return regenerator__default.a.wrap(function _callee5$(_context5) {
@@ -360,6 +433,7 @@ function _allowance() {
         switch (_context5.prev = _context5.next) {
           case 0:
             token = tokenAt(tokenAddress, web3Socket(network));
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             _context5.next = 3;
             return token.methods.allowance(owner, spender).call();
 
@@ -384,14 +458,24 @@ function approve(_x14, _x15, _x16) {
 function _approve() {
   _approve = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee6(tokenAddress, spender, value) {
+    var token, method, response;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee6$(_context6) {
+=======
   regenerator__default.a.mark(function _callee6(tokenAddress, spender, value) {
     var token, method, response;
     return regenerator__default.a.wrap(function _callee6$(_context6) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             value = convertToWei(value);
+<<<<<<< HEAD
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_1__ethereum_api_web3___default.a);
+=======
             token = tokenAt(tokenAddress, api_web3);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             method = token.methods.approve(spender, value);
             _context6.next = 5;
             return sendTx(method);
@@ -417,14 +501,24 @@ function increaseApproval(_x17, _x18, _x19) {
 function _increaseApproval() {
   _increaseApproval = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee7(tokenAddress, spender, addedValue) {
+    var token, method, response;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee7$(_context7) {
+=======
   regenerator__default.a.mark(function _callee7(tokenAddress, spender, addedValue) {
     var token, method, response;
     return regenerator__default.a.wrap(function _callee7$(_context7) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
             addedValue = convertToWei(addedValue);
+<<<<<<< HEAD
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_1__ethereum_api_web3___default.a);
+=======
             token = tokenAt(tokenAddress, api_web3);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             method = token.methods.increaseApproval(spender, addedValue);
             _context7.next = 5;
             return sendTx(method);
@@ -450,14 +544,24 @@ function decreaseApproval(_x20, _x21, _x22) {
 function _decreaseApproval() {
   _decreaseApproval = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee8(tokenAddress, spender, subtractedValue) {
+    var token, method, response;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee8$(_context8) {
+=======
   regenerator__default.a.mark(function _callee8(tokenAddress, spender, subtractedValue) {
     var token, method, response;
     return regenerator__default.a.wrap(function _callee8$(_context8) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
       while (1) {
         switch (_context8.prev = _context8.next) {
           case 0:
             subtractedValue = convertToWei(subtractedValue);
+<<<<<<< HEAD
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_1__ethereum_api_web3___default.a);
+=======
             token = tokenAt(tokenAddress, api_web3);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             method = token.methods.decreaseApproval(spender, subtractedValue);
             _context8.next = 5;
             return sendTx(method);
@@ -483,14 +587,24 @@ function transferFrom(_x23, _x24, _x25, _x26) {
 function _transferFrom() {
   _transferFrom = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee9(tokenAddress, from, to, value) {
+    var token, method, response;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee9$(_context9) {
+=======
   regenerator__default.a.mark(function _callee9(tokenAddress, from, to, value) {
     var token, method, response;
     return regenerator__default.a.wrap(function _callee9$(_context9) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
       while (1) {
         switch (_context9.prev = _context9.next) {
           case 0:
             value = convertToWei(value);
+<<<<<<< HEAD
+            token = __WEBPACK_IMPORTED_MODULE_3__ethereum_api_token___default()(tokenAddress, __WEBPACK_IMPORTED_MODULE_1__ethereum_api_web3___default.a);
+=======
             token = tokenAt(tokenAddress, api_web3);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
             method = token.methods.transferFrom(from, to, value);
             _context9.next = 5;
             return sendTx(method);
@@ -516,9 +630,15 @@ function sendTx(_x27) {
 function _sendTx() {
   _sendTx = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee10(method) {
+    var response, accounts, tx;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee10$(_context10) {
+=======
   regenerator__default.a.mark(function _callee10(method) {
     var response, accounts, tx;
     return regenerator__default.a.wrap(function _callee10$(_context10) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
       while (1) {
         switch (_context10.prev = _context10.next) {
           case 0:
@@ -569,14 +689,24 @@ function getAccounts() {
 function _getAccounts() {
   _getAccounts = _asyncToGenerator(
   /*#__PURE__*/
+<<<<<<< HEAD
+  __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee11() {
+    var accounts;
+    return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee11$(_context11) {
+=======
   regenerator__default.a.mark(function _callee11() {
     var accounts;
     return regenerator__default.a.wrap(function _callee11$(_context11) {
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
       while (1) {
         switch (_context11.prev = _context11.next) {
           case 0:
             _context11.next = 2;
+<<<<<<< HEAD
+            return __WEBPACK_IMPORTED_MODULE_1__ethereum_api_web3___default.a.eth.getAccounts();
+=======
             return api_web3.eth.getAccounts();
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 
           case 2:
             accounts = _context11.sent;
@@ -593,6 +723,17 @@ function _getAccounts() {
 }
 
 function convertToEther(value) {
+<<<<<<< HEAD
+  return __WEBPACK_IMPORTED_MODULE_1__ethereum_api_web3___default.a.utils.fromWei(value, 'ether');
+}
+
+function convertToWei(value) {
+  return __WEBPACK_IMPORTED_MODULE_1__ethereum_api_web3___default.a.utils.toWei(value);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  totalSupply: totalSupply,
+=======
   return api_web3.utils.fromWei(value, 'ether');
 }
 
@@ -602,12 +743,17 @@ function convertToWei(value) {
 
 /* harmony default export */ var apiToken = __webpack_exports__["a"] = ({
   totalSupply: apiToken_totalSupply,
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
   balanceOf: balanceOf,
   transfer: transfer,
   getSummary: getSummary,
   convertToEther: convertToEther,
   getAccounts: getAccounts,
+<<<<<<< HEAD
+  allowance: allowance,
+=======
   allowance: apiToken_allowance,
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
   approve: approve,
   increaseApproval: increaseApproval,
   decreaseApproval: decreaseApproval,
@@ -617,6 +763,8 @@ function convertToWei(value) {
 
 /***/ }),
 /* 5 */
+<<<<<<< HEAD
+=======
 /***/ (function(module, exports) {
 
 module.exports = require("web3");
@@ -650,12 +798,17 @@ module.exports = {
 
 /***/ }),
 /* 7 */
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+<<<<<<< HEAD
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head__ = __webpack_require__(6);
+=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head__ = __webpack_require__(8);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_head__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__);
@@ -665,17 +818,37 @@ module.exports = {
 /* harmony default export */ __webpack_exports__["a"] = (function (props) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Container"], null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_head___default.a, null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
     rel: "stylesheet",
+<<<<<<< HEAD
+    href: "/static/semantic/dist/semantic.min.css"
+=======
     href: "/static/dist/semantic.min.css"
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
   })), props.children);
 });
 
 /***/ }),
+<<<<<<< HEAD
+/* 6 */
+=======
 /* 8 */
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /***/ (function(module, exports) {
 
 module.exports = require("next/head");
 
 /***/ }),
+<<<<<<< HEAD
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var routes = __webpack_require__(8)();
+
+routes.add('./', '/index').add('/token/view/:tokenAddress/:network', '/token/view');
+module.exports = routes;
+
+/***/ }),
+/* 8 */
+=======
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -687,17 +860,32 @@ module.exports = routes;
 
 /***/ }),
 /* 10 */
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /***/ (function(module, exports) {
 
 module.exports = require("next-routes");
 
 /***/ }),
+<<<<<<< HEAD
+/* 9 */
+=======
 /* 11 */
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /***/ (function(module, exports) {
 
 module.exports = require("numeral");
 
 /***/ }),
+<<<<<<< HEAD
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(11);
+
+
+/***/ }),
+/* 11 */
+=======
 /* 12 */
 /***/ (function(module, exports) {
 
@@ -718,6 +906,7 @@ module.exports = __webpack_require__(15);
 
 /***/ }),
 /* 15 */
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -728,8 +917,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__);
+<<<<<<< HEAD
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Layout__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes__ = __webpack_require__(7);
+=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Layout__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes__ = __webpack_require__(9);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__routes__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__helpers_solver__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_apiToken__ = __webpack_require__(4);

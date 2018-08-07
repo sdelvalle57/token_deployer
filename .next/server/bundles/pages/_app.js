@@ -67,28 +67,50 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+=======
 /******/ 	return __webpack_require__(__webpack_require__.s = 20);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
+/***/ 16:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(17);
+=======
 /***/ 20:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(21);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 
 
 /***/ }),
 
+<<<<<<< HEAD
+/***/ 17:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(18)
+=======
 /***/ 21:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(22)
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 
 
 /***/ }),
 
+<<<<<<< HEAD
+/***/ 18:
+=======
 /***/ 22:
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /***/ (function(module, exports) {
 
 module.exports = require("next/app");
