@@ -1,0 +1,12 @@
+/*******************************
+         Site Overrides
+*******************************/
+.ui.input.index {
+    width: 100% !important;
+  }
+
+  .ui.input.cardInput {
+    width: 100%;
+  }
+
+ 

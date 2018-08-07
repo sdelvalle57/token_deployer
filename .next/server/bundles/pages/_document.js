@@ -67,28 +67,50 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 22);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(23);
+=======
+/***/ 26:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(27);
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(24)
+=======
+/***/ 27:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(28)
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 24:
+=======
+/***/ 28:
+>>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
 /***/ (function(module, exports) {
 
 module.exports = require("next/document");
