@@ -37,18 +37,18 @@
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-align: left;
   line-height: 1.21428571em;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  padding: 0.67857143em 1em;
+  font-family: 'Arial', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 0.43131868em 0.61538462em;
   background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  border: 1px solid #CCCCCC;
   color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
+  border-radius: 0.2307em;
   -webkit-transition: border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
 }
 
 /*--------------------
@@ -79,7 +79,7 @@
 
 .ui.disabled.input,
 .ui.input:not(.disabled) input[disabled] {
-  opacity: 0.45;
+  opacity: 0.3;
 }
 .ui.disabled.input > input,
 .ui.input:not(.disabled) input[disabled] {
@@ -108,9 +108,9 @@
   content: '';
   top: 50%;
   left: 50%;
-  margin: -0.64285714em 0em 0em -0.64285714em;
-  width: 1.28571429em;
-  height: 1.28571429em;
+  margin: -0.65384615em 0em 0em -0.65384615em;
+  width: 1.30769231em;
+  height: 1.30769231em;
   border-radius: 500rem;
   border: 0.2em solid rgba(0, 0, 0, 0.1);
 }
@@ -119,9 +119,9 @@
   content: '';
   top: 50%;
   left: 50%;
-  margin: -0.64285714em 0em 0em -0.64285714em;
-  width: 1.28571429em;
-  height: 1.28571429em;
+  margin: -0.65384615em 0em 0em -0.65384615em;
+  width: 1.30769231em;
+  height: 1.30769231em;
   -webkit-animation: button-spin 0.6s linear;
           animation: button-spin 0.6s linear;
   -webkit-animation-iteration-count: infinite;
@@ -140,11 +140,11 @@
 
 .ui.input.focus > input,
 .ui.input > input:focus {
-  border-color: #85B7D9;
+  border-color: #51A7E8;
   background: #FFFFFF;
   color: rgba(0, 0, 0, 0.8);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
 }
 .ui.input.focus > input::-webkit-input-placeholder,
 .ui.input > input:focus::-webkit-input-placeholder {
@@ -255,9 +255,9 @@
   right: 0px;
   margin: 0em;
   height: 100%;
-  width: 2.67142857em;
+  width: 2.17692308em;
   opacity: 0.5;
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.2307em 0.2307em 0em;
   -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
 }
@@ -265,7 +265,7 @@
   pointer-events: none;
 }
 .ui.icon.input > input {
-  padding-right: 2.67142857em !important;
+  padding-right: 2.17692308em !important;
 }
 .ui.icon.input > i.icon:before,
 .ui.icon.input > i.icon:after {
@@ -288,15 +288,15 @@
 .ui[class*="left icon"].input > i.icon {
   right: auto;
   left: 1px;
-  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+  border-radius: 0.2307em 0em 0em 0.2307em;
 }
 .ui[class*="left icon"].input > i.circular.icon {
   right: auto;
   left: 0.5em;
 }
 .ui[class*="left icon"].input > input {
-  padding-left: 2.67142857em !important;
-  padding-right: 1em !important;
+  padding-left: 2.17692308em !important;
+  padding-right: 0.61538462em !important;
 }
 
 /* Focus */
@@ -318,8 +318,8 @@
   font-size: 1em;
 }
 .ui.labeled.input > .label:not(.corner) {
-  padding-top: 0.78571429em;
-  padding-bottom: 0.78571429em;
+  padding-top: 0.53846154em;
+  padding-bottom: 0.53846154em;
 }
 
 /* Regular Label on Left */
@@ -333,7 +333,7 @@
   border-left-color: transparent;
 }
 .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input:focus {
-  border-left-color: #85B7D9;
+  border-left-color: #51A7E8;
 }
 
 /* Regular Label on Right */
@@ -347,15 +347,15 @@
   border-bottom-left-radius: 0px;
 }
 .ui[class*="right labeled"].input > input:focus {
-  border-right-color: #85B7D9 !important;
+  border-right-color: #51A7E8 !important;
 }
 
 /* Corner Label */
 .ui.labeled.input .corner.label {
   top: 1px;
   right: 1px;
-  font-size: 0.64285714em;
-  border-radius: 0em 0.28571429rem 0em 0em;
+  font-size: 0.69230769em;
+  border-radius: 0em 0.2307em 0em 0em;
 }
 
 /* Spacing with corner label */
@@ -408,8 +408,8 @@
 }
 .ui.action.input > .button,
 .ui.action.input > .buttons > .button {
-  padding-top: 0.78571429em;
-  padding-bottom: 0.78571429em;
+  padding-top: 0.53846154em;
+  padding-bottom: 0.53846154em;
   margin: 0;
 }
 
@@ -427,12 +427,12 @@
 .ui.action.input:not([class*="left action"]) > .dropdown:last-child,
 .ui.action.input:not([class*="left action"]) > .button:last-child,
 .ui.action.input:not([class*="left action"]) > .buttons:last-child > .button {
-  border-radius: 0px 0.28571429rem 0.28571429rem 0px;
+  border-radius: 0px 0.2307em 0.2307em 0px;
 }
 
 /* Input Focus */
 .ui.action.input:not([class*="left action"]) > input:focus {
-  border-right-color: #85B7D9 !important;
+  border-right-color: #51A7E8 !important;
 }
 
 /* Button on Left */
@@ -449,12 +449,12 @@
 .ui[class*="left action"].input > .dropdown:first-child,
 .ui[class*="left action"].input > .button:first-child,
 .ui[class*="left action"].input > .buttons:first-child > .button {
-  border-radius: 0.28571429rem 0px 0px 0.28571429rem;
+  border-radius: 0.2307em 0px 0px 0.2307em;
 }
 
 /* Input Focus */
 .ui[class*="left action"].input > input:focus {
-  border-left-color: #85B7D9 !important;
+  border-left-color: #51A7E8 !important;
 }
 
 /*--------------------
@@ -485,32 +485,64 @@
 ---------------------*/
 
 .ui.mini.input {
-  font-size: 0.78571429em;
+  font-size: 0.76923077em;
 }
 .ui.small.input {
-  font-size: 0.92857143em;
+  font-size: 0.92307692em;
 }
 .ui.input {
   font-size: 1em;
 }
 .ui.large.input {
-  font-size: 1.14285714em;
+  font-size: 1.15384615em;
 }
 .ui.big.input {
-  font-size: 1.28571429em;
+  font-size: 1.30769231em;
 }
 .ui.huge.input {
-  font-size: 1.42857143em;
+  font-size: 1.46153846em;
 }
 .ui.massive.input {
-  font-size: 1.71428571em;
+  font-size: 1.69230769em;
 }
 
 
 /*******************************
-         Theme Overrides
+            Input
 *******************************/
 
+
+/* Labeled Input has padding */
+.ui.labeled.input {
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 0.2307em !important;
+}
+.ui.labeled.input input {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  border: none !important;
+}
+.ui.labeled.input .label {
+  font-weight: normal;
+  -ms-flex-item-align: center;
+      align-self: center;
+  font-size: 12px;
+  margin: 0.15384615rem;
+  border-radius: 0.2307em !important;
+  padding: 0.38461538em 0.61538462em !important;
+}
+
+/* GitHub Uses Focus Group with class name added */
+.ui.labeled.input.focused {
+  border-color: #51A7E8;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
+}
+.ui.labeled.input.focused .label {
+  background-color: #E1EAF5;
+  color: #4078C0;
+}
 
 
 /*******************************

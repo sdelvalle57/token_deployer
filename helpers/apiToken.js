@@ -1,5 +1,6 @@
 import web3 from '../ethereum/api/web3';
 import web3Socket from '../ethereum/api/web3Socket';
+import basicTokenAt from '../ethereum/api/basicToken';
 import tokenAt from '../ethereum/api/token';
 
 
@@ -7,14 +8,14 @@ import tokenAt from '../ethereum/api/token';
 async function getSummary(tokenAddress, network) {
   let summary = {};
   try {
-    const token = tokenAt(tokenAddress, web3Socket(network));
+    const token = basicTokenAt(tokenAddress, web3Socket(network));
     summary['name'] = await token.methods.name().call();
     summary['symbol'] = await token.methods.symbol().call();
     summary['decimals'] = await token.methods.decimals().call();
     summary['totalSupply'] = await token.methods.totalSupply().call();
     summary['owner'] = await token.methods.owner().call();
   } catch(e) {
-    
+    console.log(e);
   }
   
   return summary;
@@ -22,20 +23,20 @@ async function getSummary(tokenAddress, network) {
 
 /* Methods for BasicToken */
 async function totalSupply(tokenAddress) {
-  const token = tokenAt(tokenAddress, web3Socket(network));
+  const token = basicTokenAt(tokenAddress, web3Socket(network));
   const totalSupply  = await token.methods.totalSupply().call();
   return totalSupply;
 }
 
 async function balanceOf(tokenAddress, who, network) {
-  const token = tokenAt(tokenAddress, web3Socket(network));
+  const token = basicTokenAt(tokenAddress, web3Socket(network));
   const balance  = await token.methods.balanceOf(who).call();
   return balance;
 }
 
 async function transfer(tokenAddress, to, value) {
   value = convertToWei(value);
-  const token = tokenAt(tokenAddress, web3);
+  const token = basicTokenAt(tokenAddress, web3);
   const method = token.methods.transfer(to, value);
   const response = await sendTx(method);
   return response;
