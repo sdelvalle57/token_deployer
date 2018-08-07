@@ -32,7 +32,7 @@ class InsertTokenAddress extends Component {
         return(
             <Container className='mainIndex' >
                 <Header as='h1' id='indexHeader' block align='center'>
-                    ERC20 TOKEN INTERFACE hx
+                    ERC20 TOKEN INTERFACE 20
                 </Header> 
             </Container>
             );
