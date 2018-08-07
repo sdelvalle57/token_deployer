@@ -1,1 +1,0 @@
-module.exports=__NEXT_REGISTER_PAGE("/show",function(){return{page:webpackJsonp([4],{630:function(e,t,n){e.exports=n(631)},631:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var u=n(0),o=n.n(u);t.default=function(){return o.a.createElement("h1",null,"This is show")}}},[630]).default}});

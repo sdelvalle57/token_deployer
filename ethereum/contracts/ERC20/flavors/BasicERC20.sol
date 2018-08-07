@@ -1,12 +1,12 @@
 pragma solidity 0.4.24;
 
-import "../BasicToken.sol"; 
 import "../../utils/Ownable.sol";
 
-contract BasicERC20 is BasicToken, Ownable {
-    string public name; 
-    string public symbol; 
-    uint8 public constant decimals = 18; 
+contract BasicERC20 is Ownable {
+
+    string public name;
+    string public symbol;
+    uint256 public decimals = 18;
 
     constructor(string _name, string _symbol, uint256 _initialSupply) public {
         uint256 INITIAL_SUPPLY = _initialSupply * (10 ** uint256(decimals));
