@@ -7,8 +7,5 @@
         "NODE_ENV": "production"
     },
     "public": true,
-    "alias": [
-      "www.erc-token.online",
-      "erc-token.online"
-    ]
+    "alias": "erc-token.online",
   }
