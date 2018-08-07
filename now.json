@@ -1,0 +1,10 @@
+{
+    "name": "erc-token",
+    "engines": {
+      "node": "9.x.x"
+    },
+    "env": {
+        "NODE_ENV": "production"
+    },
+    "public": true
+  }
