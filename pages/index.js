@@ -20,6 +20,7 @@ class InsertTokenAddress extends Component {
         tokenAddress = tokenAddress.trim();
         if(solver.isAddressValid(tokenAddress)) {
             const summary = await api.getSummary(tokenAddress, network);
+            console.log(summary);
             typeof summary.name == 'undefined' ?
                 this.setState({ errroMessage: "Contract not found"}) :
                 Router.pushRoute(`/token/view/${tokenAddress}/${network}`)
@@ -32,7 +33,7 @@ class InsertTokenAddress extends Component {
         return(
             <Container className='mainIndex' >
                 <Header as='h1' id='indexHeader' block align='center'>
-                    ERC20 TOKEN INTERFACE Create
+                    ERC20 TOKEN INTERFACE
                 </Header> 
             </Container>
             );

@@ -1,0 +1,500 @@
+{
+  "contractName": "DetailedERC20",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052601260045534801561001557600080fd5b506106c3806100256000396000f300608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde031461007d57806318160ddd1461010d578063313ce5671461013857806370a082311461016357806395d89b41146101ba578063a9059cbb1461024a575b600080fd5b34801561008957600080fd5b506100926102af565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100d25780820151818401526020810190506100b7565b50505050905090810190601f1680156100ff5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561011957600080fd5b5061012261034d565b6040518082815260200191505060405180910390f35b34801561014457600080fd5b5061014d610357565b6040518082815260200191505060405180910390f35b34801561016f57600080fd5b506101a4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061035d565b6040518082815260200191505060405180910390f35b3480156101c657600080fd5b506101cf6103a5565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561020f5780820151818401526020810190506101f4565b50505050905090810190601f16801561023c5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561025657600080fd5b50610295600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610443565b604051808215151515815260200191505060405180910390f35b60028054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103455780601f1061031a57610100808354040283529160200191610345565b820191906000526020600020905b81548152906001019060200180831161032857829003601f168201915b505050505081565b6000600154905090565b60045481565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b60038054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561043b5780601f106104105761010080835404028352916020019161043b565b820191906000526020600020905b81548152906001019060200180831161041e57829003601f168201915b505050505081565b60008073ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff161415151561048057600080fd5b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205482111515156104cd57600080fd5b61051e826000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205461066290919063ffffffff16565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055506105b1826000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205461067b90919063ffffffff16565b6000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a36001905092915050565b600082821115151561067057fe5b818303905092915050565b6000818301905082811015151561068e57fe5b809050929150505600a165627a7a723058208a06d51058c4b029617eea07a12771a46d341d4229c4cff8b1ddd187469fafce0029",
+  "deployedBytecode": "0x608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306fdde031461007d57806318160ddd1461010d578063313ce5671461013857806370a082311461016357806395d89b41146101ba578063a9059cbb1461024a575b600080fd5b34801561008957600080fd5b506100926102af565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100d25780820151818401526020810190506100b7565b50505050905090810190601f1680156100ff5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561011957600080fd5b5061012261034d565b6040518082815260200191505060405180910390f35b34801561014457600080fd5b5061014d610357565b6040518082815260200191505060405180910390f35b34801561016f57600080fd5b506101a4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061035d565b6040518082815260200191505060405180910390f35b3480156101c657600080fd5b506101cf6103a5565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561020f5780820151818401526020810190506101f4565b50505050905090810190601f16801561023c5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561025657600080fd5b50610295600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610443565b604051808215151515815260200191505060405180910390f35b60028054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103455780601f1061031a57610100808354040283529160200191610345565b820191906000526020600020905b81548152906001019060200180831161032857829003601f168201915b505050505081565b6000600154905090565b60045481565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b60038054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561043b5780601f106104105761010080835404028352916020019161043b565b820191906000526020600020905b81548152906001019060200180831161041e57829003601f168201915b505050505081565b60008073ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff161415151561048057600080fd5b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205482111515156104cd57600080fd5b61051e826000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205461066290919063ffffffff16565b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055506105b1826000808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205461067b90919063ffffffff16565b6000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a36001905092915050565b600082821115151561067057fe5b818303905092915050565b6000818301905082811015151561068e57fe5b809050929150505600a165627a7a723058208a06d51058c4b029617eea07a12771a46d341d4229c4cff8b1ddd187469fafce0029",
+  "sourceMap": "94:136:5:-;;;218:2;192:28;;94:136;8:9:-1;5:2;;;30:1;27;20:12;5:2;94:136:5;;;;;;;",
+  "deployedSourceMap": "94:136:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;140:18;;8:9:-1;5:2;;;30:1;27;20:12;5:2;140:18:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;140:18:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;404:91:0;;8:9:-1;5:2;;;30:1;27;20:12;5:2;404:91:0;;;;;;;;;;;;;;;;;;;;;;;192:28:5;;8:9:-1;5:2;;;30:1;27;20:12;5:2;192:28:5;;;;;;;;;;;;;;;;;;;;;;;1244:107:0;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1244:107:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;165:20:5;;8:9:-1;5:2;;;30:1;27;20:12;5:2;165:20:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;165:20:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;668:355:0;;8:9:-1;5:2;;;30:1;27;20:12;5:2;668:355:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;140:18:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;404:91:0:-;448:7;475:12;;468:19;;404:91;:::o;192:28:5:-;;;;:::o;1244:107:0:-;1300:7;1327:8;:16;1336:6;1327:16;;;;;;;;;;;;;;;;1320:23;;1244:107;;;:::o;165:20:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;668:355:0:-;731:4;771:1;756:17;;:3;:17;;;;748:26;;;;;;;;803:8;:20;812:10;803:20;;;;;;;;;;;;;;;;793:6;:30;;785:39;;;;;;;;860:32;885:6;860:8;:20;869:10;860:20;;;;;;;;;;;;;;;;:24;;:32;;;;:::i;:::-;837:8;:20;846:10;837:20;;;;;;;;;;;;;;;:55;;;;919:25;937:6;919:8;:13;928:3;919:13;;;;;;;;;;;;;;;;:17;;:25;;;;:::i;:::-;903:8;:13;912:3;903:13;;;;;;;;;;;;;;;:41;;;;981:3;960:33;;969:10;960:33;;;986:6;960:33;;;;;;;;;;;;;;;;;;1011:4;1004:11;;668:355;;;;:::o;922:123:11:-;980:7;1012:1;1007;:6;;1000:14;;;;;;1036:1;1032;:5;1025:12;;922:123;;;;:::o;1114:141::-;1172:9;1202:1;1198;:5;1194:9;;1226:1;1221;:6;;1214:14;;;;;;1246:1;1239:8;;1114:141;;;;:::o",
+  "source": "pragma solidity 0.4.24;\r\n\r\nimport \"../BasicToken.sol\"; \r\nimport \"../../utils/Ownable.sol\";\r\n\r\ncontract DetailedERC20 is BasicToken {\r\n\r\n    string public name;\r\n    string public symbol;\r\n    uint256 public decimals = 18;\r\n    \r\n}",
+  "sourcePath": "E:\\Ethereum\\TokenCreator\\ethereum\\contracts\\ERC20\\flavors\\DetailedERC20.sol",
+  "ast": {
+    "absolutePath": "/E/Ethereum/TokenCreator/ethereum/contracts/ERC20/flavors/DetailedERC20.sol",
+    "exportedSymbols": {
+      "DetailedERC20": [
+        486
+      ]
+    },
+    "id": 487,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 474,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:5"
+      },
+      {
+        "absolutePath": "/E/Ethereum/TokenCreator/ethereum/contracts/ERC20/BasicToken.sol",
+        "file": "../BasicToken.sol",
+        "id": 475,
+        "nodeType": "ImportDirective",
+        "scope": 487,
+        "sourceUnit": 96,
+        "src": "27:27:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/E/Ethereum/TokenCreator/ethereum/contracts/utils/Ownable.sol",
+        "file": "../../utils/Ownable.sol",
+        "id": 476,
+        "nodeType": "ImportDirective",
+        "scope": 487,
+        "sourceUnit": 1119,
+        "src": "57:33:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 477,
+              "name": "BasicToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 95,
+              "src": "120:10:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_BasicToken_$95",
+                "typeString": "contract BasicToken"
+              }
+            },
+            "id": 478,
+            "nodeType": "InheritanceSpecifier",
+            "src": "120:10:5"
+          }
+        ],
+        "contractDependencies": [
+          95,
+          170
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 486,
+        "linearizedBaseContracts": [
+          486,
+          95,
+          170
+        ],
+        "name": "DetailedERC20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 480,
+            "name": "name",
+            "nodeType": "VariableDeclaration",
+            "scope": 486,
+            "src": "140:18:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 479,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "140:6:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 482,
+            "name": "symbol",
+            "nodeType": "VariableDeclaration",
+            "scope": 486,
+            "src": "165:20:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 481,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "165:6:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 485,
+            "name": "decimals",
+            "nodeType": "VariableDeclaration",
+            "scope": 486,
+            "src": "192:28:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 483,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "192:7:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3138",
+              "id": 484,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "218:2:5",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_18_by_1",
+                "typeString": "int_const 18"
+              },
+              "value": "18"
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 487,
+        "src": "94:136:5"
+      }
+    ],
+    "src": "0:230:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/E/Ethereum/TokenCreator/ethereum/contracts/ERC20/flavors/DetailedERC20.sol",
+    "exportedSymbols": {
+      "DetailedERC20": [
+        486
+      ]
+    },
+    "id": 487,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 474,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:5"
+      },
+      {
+        "absolutePath": "/E/Ethereum/TokenCreator/ethereum/contracts/ERC20/BasicToken.sol",
+        "file": "../BasicToken.sol",
+        "id": 475,
+        "nodeType": "ImportDirective",
+        "scope": 487,
+        "sourceUnit": 96,
+        "src": "27:27:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/E/Ethereum/TokenCreator/ethereum/contracts/utils/Ownable.sol",
+        "file": "../../utils/Ownable.sol",
+        "id": 476,
+        "nodeType": "ImportDirective",
+        "scope": 487,
+        "sourceUnit": 1119,
+        "src": "57:33:5",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 477,
+              "name": "BasicToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 95,
+              "src": "120:10:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_BasicToken_$95",
+                "typeString": "contract BasicToken"
+              }
+            },
+            "id": 478,
+            "nodeType": "InheritanceSpecifier",
+            "src": "120:10:5"
+          }
+        ],
+        "contractDependencies": [
+          95,
+          170
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 486,
+        "linearizedBaseContracts": [
+          486,
+          95,
+          170
+        ],
+        "name": "DetailedERC20",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 480,
+            "name": "name",
+            "nodeType": "VariableDeclaration",
+            "scope": 486,
+            "src": "140:18:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 479,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "140:6:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 482,
+            "name": "symbol",
+            "nodeType": "VariableDeclaration",
+            "scope": 486,
+            "src": "165:20:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 481,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "165:6:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 485,
+            "name": "decimals",
+            "nodeType": "VariableDeclaration",
+            "scope": 486,
+            "src": "192:28:5",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 483,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "192:7:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3138",
+              "id": 484,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "218:2:5",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_18_by_1",
+                "typeString": "int_const 18"
+              },
+              "value": "18"
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 487,
+        "src": "94:136:5"
+      }
+    ],
+    "src": "0:230:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-08-07T11:48:02.584Z"
+}

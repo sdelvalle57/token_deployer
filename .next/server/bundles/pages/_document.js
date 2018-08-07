@@ -67,50 +67,28 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-<<<<<<< HEAD
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
-=======
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
->>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-<<<<<<< HEAD
-/***/ 22:
+/***/ "./node_modules/next/dist/pages/_document.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(23);
-=======
-/***/ 26:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(27);
->>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
+module.exports = __webpack_require__("next/document")
 
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ 23:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(24)
-=======
-/***/ 27:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(28)
->>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
+module.exports = __webpack_require__("./node_modules/next/dist/pages/_document.js");
 
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ 24:
-=======
-/***/ 28:
->>>>>>> e05ed176a3ccf5dd94a9f81de32cf1f2c58aa141
+/***/ "next/document":
 /***/ (function(module, exports) {
 
 module.exports = require("next/document");
@@ -118,3 +96,4 @@ module.exports = require("next/document");
 /***/ })
 
 /******/ });
+//# sourceMappingURL=_document.js.map
