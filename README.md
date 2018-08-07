@@ -1,6 +1,6 @@
 # ERC Token Interface
 
-The purpose of this project is to create a simple ERC Token interface to read and launch tokens on the test and the main network.
+The purpose of this project is to create an ERC Token interface to read and launch tokens on the test and the main network.
 We will use Open Zeppelin Framework for the contracts and we will add some other contracts for the deployments of these.
 
 This is a personal project thus any collaboration would be appreciated, developers, designers and enthusiasts are welcome to contribute.
