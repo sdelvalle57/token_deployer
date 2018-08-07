@@ -1,5 +1,5 @@
 {
-    "name": "worldpay",
+    "name": "erc20-token",
     "engines": {
       "node": "9.x.x"
     },
