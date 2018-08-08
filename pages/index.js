@@ -3,7 +3,7 @@ import { Input, Container, Header, Form, Dropdown, Message } from 'semantic-ui-r
 import Layout from '../components/Layout'; 
 import { Router } from '../routes';
 import solver from '../helpers/solver';
-import api from '../helpers/apiToken';
+import api from '../helpers/apiTokenERC20';
 
 
 class InsertTokenAddress extends Component {

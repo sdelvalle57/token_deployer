@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Dimmer, Loader, Header, Icon } from 'semantic-ui-react';
 import Layout from '../../components/Layout'; 
-import api from '../../helpers/apiToken';
+import api from '../../helpers/apiTokenERC20';
 import solver from '../../helpers/solver';
 import BasicToken from '../../components/BasicToken';
 import StandardToken from '../../components/StandardToken';
@@ -35,7 +35,6 @@ class ViewToken extends Component {
         this.setCheckNetworkInterval();
         const dimmerActive =  typeof summary.name == 'undefined';
         const contractError = dimmerActive;
-        console.log(dimmerActive + " "+contractError);
         this.setState({summary, dimmerActive, contractError})
     }
 
@@ -57,7 +56,7 @@ class ViewToken extends Component {
             }
             if (typeof window.web3 == 'undefined') {
                 network.providerNotSet = true;
-                network.message("Use a provider to send the Transaction");
+                network.message = "Use a provider to send the Transaction";
                 this.setState({network});
                 return;
             }

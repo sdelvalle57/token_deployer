@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Form, Input, Label, Card, Container, Dimmer, Loader, Grid } from 'semantic-ui-react';
-import api from '../helpers/apiToken';
+import api from '../helpers/apiTokenERC20';
 import solver from '../helpers/solver';
 
 

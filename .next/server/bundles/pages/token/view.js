@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -82,7 +82,7 @@ module.exports =
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__ = __webpack_require__("semantic-ui-react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__ = __webpack_require__("./helpers/apiToken.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__ = __webpack_require__("./helpers/apiTokenERC20.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_solver__ = __webpack_require__("./helpers/solver.js");
 
 var _jsxFileName = "E:\\Ethereum\\TokenCreator\\components\\BasicToken.js";
@@ -175,7 +175,7 @@ function (_Component) {
 
                     case 5:
                       _context.next = 7;
-                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].balanceOf(tokenAddress, balance.who, network);
+                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].balanceOf(tokenAddress, balance.who, network);
 
                     case 7:
                       balance.response = _context.sent;
@@ -216,7 +216,7 @@ function (_Component) {
                       });
 
                       _context.next = 21;
-                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].transfer(tokenAddress, transfer.to, transfer.value);
+                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].transfer(tokenAddress, transfer.to, transfer.value);
 
                     case 21:
                       transferValue = _context.sent;
@@ -470,7 +470,7 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 162
         }
-      }, balance.response != "" ? __WEBPACK_IMPORTED_MODULE_4__helpers_solver__["a" /* default */].formatNumber(__WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].convertToEther(balance.response)) + " " + summary.symbol + "s" : ""));
+      }, balance.response != "" ? __WEBPACK_IMPORTED_MODULE_4__helpers_solver__["a" /* default */].formatNumber(__WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].convertToEther(balance.response)) + " " + summary.symbol + "s" : ""));
     }
   }, {
     key: "renderTransferCard",
@@ -566,6 +566,269 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./components/Header.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__ = __webpack_require__("semantic-ui-react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes__ = __webpack_require__("./routes.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__routes__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ethereum_api_web3__ = __webpack_require__("./ethereum/api/web3.js");
+var _jsxFileName = "E:\\Ethereum\\TokenCreator\\components\\Header.js";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+
+
+
+var Header =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Header, _Component);
+
+  function Header() {
+    var _ref;
+
+    var _temp, _this;
+
+    _classCallCheck(this, Header);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_ref = Header.__proto__ || Object.getPrototypeOf(Header)).call.apply(_ref, [this].concat(args))), Object.defineProperty(_assertThisInitialized(_this), "state", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: {
+        open: false
+      }
+    }), Object.defineProperty(_assertThisInitialized(_this), "show", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        return _this.setState({
+          open: true
+        });
+      }
+    }), Object.defineProperty(_assertThisInitialized(_this), "close", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function value() {
+        return _this.setState({
+          open: false
+        });
+      }
+    }), _temp));
+  }
+
+  _createClass(Header, [{
+    key: "renderModal",
+
+    /* 
+    TODO:
+    add <Button positive icon='ethereum' labelPosition='right' content='Contribute' />
+    inside Modal.Actions, next to the other button
+    
+    TODO:
+    <Modal.Actions>
+      TODO: handle error message when  click oo contribte
+    </Modal.Actions> 
+    */
+    value: function renderModal() {
+      var open = this.state.open;
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Modal"], {
+        size: "tiny",
+        open: open,
+        onClose: this.close,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Modal"].Header, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }, "About"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Modal"].Content, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30
+        }
+      }, this.renderContent()), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Modal"].Actions, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Button"], {
+        negative: true,
+        onClick: this.close,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        }
+      }, "Close")));
+    }
+  }, {
+    key: "renderLink",
+    value: function renderLink(num) {
+      var message = "Open Zeppelin Framework";
+      var href = "https://openzeppelin.org/";
+
+      if (num == 1) {
+        message = "https://github.com/sdelvalle57/token_deployer";
+        href = "https://github.com/sdelvalle57/token_deployer";
+      } else if (num == 2) {
+        message = "Linkedin profile";
+        href = "https://www.linkedin.com/in/santiago-del-valle-sdelvalle57-96654969/";
+      }
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+        target: "_blank",
+        rel: "noopener noreferrer",
+        href: href,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53
+        }
+      }, message);
+    }
+  }, {
+    key: "renderContent",
+    value: function renderContent() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
+        align: "justify",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 64
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("strong", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 65
+        }
+      }, "ERC Token Interface"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 65
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 65
+        }
+      }), "The purpose of this project is to create an ERC Token interface to read and launch tokens on the test and the main network. ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67
+        }
+      }), "We will use ", this.renderLink(0), "  for the contracts and we will add some other contracts for the deployments of these.", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 70
+        }
+      }), "This is a personal project thus any collaboration would be appreciated, developers, designers and enthusiasts are welcome to contribute.", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 73
+        }
+      }), "Please pass this project as many peers that you can, is on behalf of the community.", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74
+        }
+      }), "Visit ", this.renderLink(1), "  for the latest deployments.", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 76
+        }
+      }), "If you want to contribute please launch a token and send some ether to the contract(this way is much more appreciated). ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78
+        }
+      }), "Email: sdelvalle57@gmail.com ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 79
+        }
+      }), this.renderLink(2));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Container"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 87
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"], {
+        style: {
+          marginTop: '10px'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 88
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__routes__["Link"], {
+        route: "/",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 89
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+        className: "item",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 90
+        }
+      }, "ERC-token.online")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Menu, {
+        position: "right",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 93
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+        className: "item",
+        onClick: this.show,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 95
+        }
+      }, "About"))), this.renderModal());
+    }
+  }]);
+
+  return Header;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Header);
+/*
+
+-*/
+
+/***/ }),
+
 /***/ "./components/Layout.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -576,7 +839,9 @@ function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_head__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__ = __webpack_require__("semantic-ui-react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Header__ = __webpack_require__("./components/Header.js");
 var _jsxFileName = "E:\\Ethereum\\TokenCreator\\components\\Layout.js";
+
 
 
 
@@ -584,21 +849,26 @@ var _jsxFileName = "E:\\Ethereum\\TokenCreator\\components\\Layout.js";
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Container"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 8
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_head___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 9
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
     rel: "stylesheet",
     href: "/static/dist/semantic.min.css",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 10
     }
-  })), props.children);
+  })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Header__["a" /* default */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    }
+  }), props.children);
 });
 
 /***/ }),
@@ -613,7 +883,7 @@ var _jsxFileName = "E:\\Ethereum\\TokenCreator\\components\\Layout.js";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__ = __webpack_require__("semantic-ui-react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__ = __webpack_require__("./helpers/apiToken.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__ = __webpack_require__("./helpers/apiTokenERC20.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_solver__ = __webpack_require__("./helpers/solver.js");
 
 var _jsxFileName = "E:\\Ethereum\\TokenCreator\\components\\StandardToken.js";
@@ -738,7 +1008,7 @@ function (_Component) {
 
                     case 5:
                       _context.next = 7;
-                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].allowance(tokenAddress, allowance.owner, allowance.spender, network);
+                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].allowance(tokenAddress, allowance.owner, allowance.spender, network);
 
                     case 7:
                       allowance.response = _context.sent;
@@ -779,7 +1049,7 @@ function (_Component) {
                       });
 
                       _context.next = 22;
-                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].approve(tokenAddress, approve.spender, approve.value);
+                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].approve(tokenAddress, approve.spender, approve.value);
 
                     case 22:
                       approveValue = _context.sent;
@@ -824,7 +1094,7 @@ function (_Component) {
                       });
 
                       _context.next = 40;
-                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].increaseApproval(tokenAddress, increaseApproval.spender, increaseApproval.addedValue);
+                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].increaseApproval(tokenAddress, increaseApproval.spender, increaseApproval.addedValue);
 
                     case 40:
                       increaseApprovalValue = _context.sent;
@@ -869,7 +1139,7 @@ function (_Component) {
                       });
 
                       _context.next = 58;
-                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].decreaseApproval(tokenAddress, decreaseApproval.spender, decreaseApproval.subtractedValue);
+                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].decreaseApproval(tokenAddress, decreaseApproval.spender, decreaseApproval.subtractedValue);
 
                     case 58:
                       decreaseApprovalValue = _context.sent;
@@ -914,7 +1184,7 @@ function (_Component) {
                       });
 
                       _context.next = 76;
-                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].transferFrom(tokenAddress, transferFrom.from, transferFrom.to, transferFrom.value);
+                      return __WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].transferFrom(tokenAddress, transferFrom.from, transferFrom.to, transferFrom.value);
 
                     case 76:
                       transferFromlValue = _context.sent;
@@ -1417,7 +1687,7 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 382
         }
-      }, allowance.response != "" ? __WEBPACK_IMPORTED_MODULE_4__helpers_solver__["a" /* default */].formatNumber(__WEBPACK_IMPORTED_MODULE_3__helpers_apiToken__["a" /* default */].convertToEther(allowance.response)) + " " + summary.symbol + "s" : ""));
+      }, allowance.response != "" ? __WEBPACK_IMPORTED_MODULE_4__helpers_solver__["a" /* default */].formatNumber(__WEBPACK_IMPORTED_MODULE_3__helpers_apiTokenERC20__["a" /* default */].convertToEther(allowance.response)) + " " + summary.symbol + "s" : ""));
     }
   }, {
     key: "renderApprove",
@@ -1736,6 +2006,8 @@ if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
   web3 = new __WEBPACK_IMPORTED_MODULE_0_web3___default.a(window.web3.currentProvider);
 } else if (env == 'development') {
   web3 = new __WEBPACK_IMPORTED_MODULE_0_web3___default.a("http://localhost:" + __WEBPACK_IMPORTED_MODULE_1__truffle___default.a.networks.development.port);
+} else {
+  web3 = new __WEBPACK_IMPORTED_MODULE_0_web3___default.a(new __WEBPACK_IMPORTED_MODULE_0_web3___default.a.providers.WebsocketProvider('wss://rinkeby.infura.io/_ws'));
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (web3);
@@ -1819,7 +2091,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./helpers/apiToken.js":
+/***/ "./helpers/apiTokenERC20.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2307,7 +2579,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__ = __webpack_require__("semantic-ui-react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Layout__ = __webpack_require__("./components/Layout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_apiToken__ = __webpack_require__("./helpers/apiToken.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_apiTokenERC20__ = __webpack_require__("./helpers/apiTokenERC20.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__helpers_solver__ = __webpack_require__("./helpers/solver.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_BasicToken__ = __webpack_require__("./components/BasicToken.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_StandardToken__ = __webpack_require__("./components/StandardToken.js");
@@ -2397,7 +2669,7 @@ function (_Component) {
 
           if (typeof window.web3 == 'undefined') {
             network.providerNotSet = true;
-            network.message("Use a provider to send the Transaction");
+            network.message = "Use a provider to send the Transaction";
 
             _this.setState({
               network: network
@@ -2432,7 +2704,7 @@ function (_Component) {
                         }
 
                         _context.next = 4;
-                        return __WEBPACK_IMPORTED_MODULE_4__helpers_apiToken__["a" /* default */].getAccounts(window.web3.currentProvider);
+                        return __WEBPACK_IMPORTED_MODULE_4__helpers_apiTokenERC20__["a" /* default */].getAccounts(window.web3.currentProvider);
 
                       case 4:
                         accounts = _context.sent;
@@ -2495,21 +2767,20 @@ function (_Component) {
                 tokenAddress = this.props.url.query.tokenAddress;
                 networkId = this.props.url.query.network;
                 _context2.next = 4;
-                return __WEBPACK_IMPORTED_MODULE_4__helpers_apiToken__["a" /* default */].getSummary(tokenAddress, networkId);
+                return __WEBPACK_IMPORTED_MODULE_4__helpers_apiTokenERC20__["a" /* default */].getSummary(tokenAddress, networkId);
 
               case 4:
                 summary = _context2.sent;
                 this.setCheckNetworkInterval();
                 dimmerActive = typeof summary.name == 'undefined';
                 contractError = dimmerActive;
-                console.log(dimmerActive + " " + contractError);
                 this.setState({
                   summary: summary,
                   dimmerActive: dimmerActive,
                   contractError: contractError
                 });
 
-              case 10:
+              case 9:
               case "end":
                 return _context2.stop();
             }
@@ -2534,7 +2805,7 @@ function (_Component) {
         active: dimmerActive,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 100
+          lineNumber: 99
         }
       }, this.renderDimmerContent());
     }
@@ -2550,13 +2821,13 @@ function (_Component) {
           inverted: true,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 110
+            lineNumber: 109
           }
         }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Icon"], {
           name: "broken chain",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 111
+            lineNumber: 110
           }
         }), "Contract not found!", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Icon"], {
           link: true,
@@ -2564,7 +2835,7 @@ function (_Component) {
           onClick: this.onClick,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 113
+            lineNumber: 112
           }
         }));
       } else {
@@ -2572,7 +2843,7 @@ function (_Component) {
           size: "large",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 117
+            lineNumber: 116
           }
         }, "Loading");
       }
@@ -2588,7 +2859,7 @@ function (_Component) {
         var items = [{
           header: "Name and symbol: " + summary.name + "(" + summary.symbol + ")",
           meta: summary.decimals + " decimals",
-          description: "Total supply is " + __WEBPACK_IMPORTED_MODULE_5__helpers_solver__["a" /* default */].formatNumber(__WEBPACK_IMPORTED_MODULE_4__helpers_apiToken__["a" /* default */].convertToEther(summary.totalSupply)) + " " + summary.symbol + "s",
+          description: "Total supply is " + __WEBPACK_IMPORTED_MODULE_5__helpers_solver__["a" /* default */].formatNumber(__WEBPACK_IMPORTED_MODULE_4__helpers_apiTokenERC20__["a" /* default */].convertToEther(summary.totalSupply)) + " " + summary.symbol + "s",
           extra: 'owner: ' + summary.owner
         }];
         return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Card"].Group, {
@@ -2596,7 +2867,7 @@ function (_Component) {
           items: items,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 136
+            lineNumber: 135
           }
         });
       }
@@ -2616,7 +2887,7 @@ function (_Component) {
         network: network,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 144
+          lineNumber: 143
         }
       });
     }
@@ -2633,7 +2904,7 @@ function (_Component) {
         network: network,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 153
+          lineNumber: 152
         }
       });
     }
@@ -2643,12 +2914,12 @@ function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Layout__["a" /* default */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 163
+          lineNumber: 162
         }
       }, this.renderDimmer(), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 165
+          lineNumber: 164
         }
       }, this.renderSummaryCard(), this.renderBasicToken(), this.renderStandardToken()));
     }
@@ -2671,7 +2942,7 @@ module.exports = routes;
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/token/view.js");
