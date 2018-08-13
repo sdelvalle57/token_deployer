@@ -1,8 +1,9 @@
 pragma solidity 0.4.24;
 
+import "../BasicToken.sol"; 
 import "../../utils/Ownable.sol";
 
-contract BasicERC20 is Ownable {
+contract BasicERC20 is BasicToken, Ownable {
 
     string public name;
     string public symbol;

@@ -5340,11 +5340,6 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.container.input {
   width: 750px;
-  top: 50%;
-  left: 50%;
-  position: fixed;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 
 .ui.container.contResponse {
@@ -19791,6 +19786,13 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.ordered.steps {
+  bottom: 0;
+  position: fixed;
+  line-height: 0.8em;
+  z-index: 10;
+}
 /*!
  * # Semantic UI 2.3.3 - Breadcrumb
  * http://github.com/semantic-org/semantic-ui/
@@ -23419,6 +23421,10 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.grid:last-child {
+  margin-bottom: 80px;
+}
 /*
  * # Semantic - Menu
  * http://github.com/semantic-org/semantic-ui/
@@ -28992,7 +28998,6 @@ a.ui.card:hover,
 
 #summaryCard.ui.cards {
   text-align: center;
-  margin-top: 50px;
 }
 
 #summaryCard.ui.cards > .card {
@@ -31967,7 +31972,6 @@ body.dimmable > .dimmer {
 
 .ui.dimmer.cardDimmer {
   width: -webkit-fill-available;
-  height: 86%;
 }
 /*!
  * # Semantic UI 2.3.3 - Dropdown

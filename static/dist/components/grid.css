@@ -2037,3 +2037,6 @@
          Site Overrides
 *******************************/
 
+.ui.grid:last-child {
+  margin-bottom: 80px;
+}

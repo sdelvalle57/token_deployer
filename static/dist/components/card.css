@@ -1008,7 +1008,6 @@ a.ui.card:hover,
 }
 #summaryCard.ui.cards {
   text-align: center;
-  margin-top: 50px;
 }
 #summaryCard.ui.cards > .card {
   width: 100%;

@@ -1,3 +1,9 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.ordered.steps {
+    bottom: 0;
+    position: fixed;
+    line-height: 0.8em;
+    z-index: 10;
+}

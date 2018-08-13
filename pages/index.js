@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Input, Container, Header, Form, Dropdown, Message } from 'semantic-ui-react';
+import { Input, Container, Label, Form, Message} from 'semantic-ui-react';
 import Layout from '../components/Layout'; 
 import { Router } from '../routes';
 import solver from '../helpers/solver';
-import api from '../helpers/apiTokenERC20';
+import api from '../helpers/erc20/apiBasicERC20';
 
 
 class InsertTokenAddress extends Component {
@@ -11,61 +11,69 @@ class InsertTokenAddress extends Component {
     state = {
         tokenAddress: "", 
         errroMessage: "",
-        network: '4'
+        network: {},
+        loading: false
+    }
+
+    networkCallback = (network) => {
+        this.setState({network: network.network});
     }
 
     onSubmit = async (event) => {
-        event.preventDefault();
+        if(event != null) event.preventDefault();
+        this.setState({ errroMessage: ''});
         let { tokenAddress, network } = this.state;
+        
+        if(network.providerNotSet || network.networkNotSet) {
+            this.setState({ errroMessage: network.message});
+            return;
+        }
         tokenAddress = tokenAddress.trim();
+
         if(solver.isAddressValid(tokenAddress)) {
-            const summary = await api.getSummary(tokenAddress, network);
-            console.log(summary);
+            this.setState({loading : true})
+            const summary = await api.getSummary(tokenAddress, network.networkId);
             typeof summary.name == 'undefined' ?
-                this.setState({ errroMessage: "Contract not found"}) :
-                Router.pushRoute(`/token/view/${tokenAddress}/${network}`)
+                this.setState({ errroMessage: "Contract not found"}) : 
+                Router.pushRoute(`/token/view/${tokenAddress}`)
+            this.setState({loading : false})
         } else {
             this.setState({ errroMessage: "Not valid eth address"});
         }
     }
 
-    renderIndex() {
-        return(
-            <Container className='mainIndex' >
-                <Header as='h1' id='indexHeader' block align='center'>
-                    ERC20 TOKEN INTERFACE
-                </Header> 
-            </Container>
-            );
+    onTryCLick = (tryAddress) => {
+        this.setState({tokenAddress: tryAddress});
+        setTimeout(() => {
+            this.onSubmit();
+        }, 350);
+        
     }
 
     renderInput() {
-        const options = [
-            { key: 'rinkeby', text: 'Rinkeby eth//: ', value: '4' },
-            { key: 'main', text: 'Main eth//: ', value: '1' }
-          ]
-        return (
+        const tryAddress = "0x7bbd2895bf740e7771785854ee74ed401e803555";
+        const {errroMessage, loading, tokenAddress} = this.state;
+        return ( 
             <Container className='input'>
-                    <Form className='indexForm' onSubmit={ this.onSubmit } error={!!this.state.errroMessage}>
+                    <Form className='indexForm' onSubmit={ this.onSubmit } error={!!errroMessage}>
                         <Form.Field>
                             <Input 
+                                loading = {loading}
                                 className='index' 
-                                label={<Dropdown 
-                                    defaultValue='4' 
-                                    options={options} 
-                                    onChange= {(e, result) => {
-                                        this.setState({ network: result.value })}
-                                    }/>}
-                                labelPosition='left'
                                 action={{ icon: 'search' }} 
+                                actionPosition= 'left'
                                 onChange={event => 
                                     this.setState({ 
                                         tokenAddress: event.target.value,
                                         errroMessage: ''
                                     })}
-                                placeholder='0x...  Enter the ERC20 token contract address' />
+                                placeholder='0x...  Enter the YLEMER contract address'
+                                value={tokenAddress} />
                         </Form.Field>
-                        <Message error header="Oops!" content={this.state.errroMessage} />
+                        <Label onClick ={this.onTryCLick.bind(this, tryAddress)} as='a' basic className="tryThis" pointing>
+                            Tyr this {tryAddress}
+                        </Label>
+                        <Message error header="Oops!" content={errroMessage} />
                     </Form>
             </Container>
         )
@@ -75,9 +83,8 @@ class InsertTokenAddress extends Component {
 
     render() {
         return (
-            <Layout>
+            <Layout callback={this.networkCallback}>
                 <div>
-                    {this.renderIndex()}
                     {this.renderInput()}
                 </div>
             </Layout>

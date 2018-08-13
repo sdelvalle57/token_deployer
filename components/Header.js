@@ -1,7 +1,6 @@
 import React, {Component } from 'react';
 import { Menu, Modal, Button, Container } from 'semantic-ui-react';
 import { Link } from '../routes';
-import web3 from '../ethereum/api/web3';
 
 class Header extends Component {
   
@@ -106,7 +105,3 @@ class Header extends Component {
 export default Header;
 
 
-
-/*
-
--*/
