@@ -1,7 +1,7 @@
 import web3 from '../../ethereum/api/web3';
 import sendTx from '../web3TxHandler';
 import solver from '../solver';
-import standardERC20 from '../../ethereum/api/standardERC20';
+import standardERC20 from '../../ethereum/api/erc20/standardERC20';
 
 /*Methods for StandardToken */
 async function allowance(tokenAddress, owner, spender) {

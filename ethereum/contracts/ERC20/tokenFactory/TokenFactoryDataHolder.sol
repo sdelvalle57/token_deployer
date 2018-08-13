@@ -8,11 +8,6 @@ import "../../utils/SafeMath.sol";
 contract TokenFactoryDataHolder {
     using SafeMath for uint256;
 
-    struct Prices {
-        uint256 standardERC20price;
-        //one change
-    } 
-
     enum TokenType {
         BASIC_ERC20,
         STANDARD_ERC20,
@@ -25,6 +20,7 @@ contract TokenFactoryDataHolder {
 
     uint256 public fundsRaised;
     uint256 public fundsWithdrawn;
+    uint256[] public prices; //0 is basic, 1 is standard, ....
 
     address public tokenFactoryImpl;
 
@@ -32,7 +28,6 @@ contract TokenFactoryDataHolder {
     address[] public standardTokensDeployed;
     address[] public users;
 
-    Prices public prices;
 
     mapping (address => TokenType) public token;
     mapping (address => address[]) public contracts;
@@ -72,12 +67,12 @@ contract TokenFactoryDataHolder {
         contracts[_user].push(_token);
     }
 
-    function setStandardERC20Price(uint256 _standardERC20Price) public onlyImplementation() {
-        prices.standardERC20price = _standardERC20Price;
+    function setPrice(uint256 _index, uint256 _standardERC20Price) public onlyImplementation() {
+        prices[_index] = _standardERC20Price;
     }
 
-    function getStandarERC20Price() public view returns (uint256)  {
-        return prices.standardERC20price;
+    function getPrices() public view returns (uint256[])  {
+        return prices;
     }
 
     function getContracts(address _user) public view returns (address[]) {

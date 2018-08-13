@@ -943,3 +943,7 @@ ol.ui.horizontal.list li:before,
     User Variable Overrides
 *******************************/
 
+.ui.list.listIndex {
+  overflow: auto;
+  max-height: -webkit-fill-available;
+}

@@ -7725,6 +7725,16 @@ a.ui.inverted.grey.header:hover {
 /*******************************
          Site Overrides
 *******************************/
+
+h4.ui.header.headerIndexList {
+  -ms-flex-item-align: center;
+  align-self: center;
+  background: #CCCCCC;
+  max-height: 2em;
+  border-radius: 22px;
+  padding: 0.5em 0.2em;
+  margin-right: 0.4em !important;
+}
 /*!
  * # Semantic UI 2.3.3 - Icon
  * http://github.com/semantic-org/semantic-ui/
@@ -17341,6 +17351,11 @@ ol.ui.horizontal.list li:before,
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.list.listIndex {
+  overflow: auto;
+  max-height: -webkit-fill-available;
+}
 /*!
  * # Semantic UI 2.3.3 - Loader
  * http://github.com/semantic-org/semantic-ui/
@@ -23424,6 +23439,11 @@ ol.ui.horizontal.list li:before,
 
 .ui.grid:last-child {
   margin-bottom: 80px;
+}
+
+.ui.celled.grid.gridIndex {
+  max-height: 40vh;
+  min-height: 22vh;
 }
 /*
  * # Semantic - Menu

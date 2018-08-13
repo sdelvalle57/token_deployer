@@ -1,36 +1,15 @@
 import web3 from '../../ethereum/api/web3';
-import basicTokenAt from '../../ethereum/api/basicToken';
-import tokenAt from '../../ethereum/api/token';
+import dataHolderAt from '../../ethereum/api/erc20/dataHolderERC20';
 
 
-/* reading functions */
-async function getSummary(tokenAddress, network) {
-  let summary = {};
-  try {
-    const token = basicTokenAt(tokenAddress, web3);
-    summary['name'] = await token.methods.name().call();
-    summary['symbol'] = await token.methods.symbol().call();
-    summary['decimals'] = await token.methods.decimals().call();
-    summary['totalSupply'] = await token.methods.totalSupply().call();
-    summary['owner'] = await token.methods.owner().call();
-  } catch(e) {
-  }
-  
-  return summary;
+
+
+async function getStandarERC20Price(address) {
+  const dataHolder = dataHolderAt(address, web3);
+  const price  = await dataHolder.methods.getStandarERC20Price().call();
+  return price;
 }
-
-/* Methods for BasicToken */
-async function totalSupply(tokenAddress) {
-  const token = basicTokenAt(tokenAddress, web3);
-  const totalSupply  = await token.methods.totalSupply().call();
-  return totalSupply;
-}
-
-async function balanceOf(tokenAddress, who, network) {
-  const token = basicTokenAt(tokenAddress, web3);
-  const balance  = await token.methods.balanceOf(who).call();
-  return balance;
-}
+/*
 
 async function transfer(tokenAddress, to, value) {
   value = convertToWei(value);
@@ -39,85 +18,14 @@ async function transfer(tokenAddress, to, value) {
   const response = await sendTx(method);
   return response;
 }
+*/
 
-/*Methods for StandardToken */
-async function allowance(tokenAddress, owner, spender, network) {
-  const token = tokenAt(tokenAddress, web3);
-  const allowance  = await token.methods.allowance(owner, spender).call();
-  return allowance;
-}
-
-async function approve(tokenAddress, spender, value) {
-  value = convertToWei(value);
-  const token = tokenAt(tokenAddress, web3);
-  const method = token.methods.approve(spender, value);
-  const response = await sendTx(method);
-  return response;
-}
-
-async function increaseApproval(tokenAddress, spender, addedValue) {
-  addedValue = convertToWei(addedValue);
-  const token = tokenAt(tokenAddress, web3);
-  const method = token.methods.increaseApproval(spender, addedValue);
-  const response = await sendTx(method);
-  return response;
-}
-
-async function decreaseApproval(tokenAddress, spender, subtractedValue) {
-  subtractedValue = convertToWei(subtractedValue);
-  const token = tokenAt(tokenAddress, web3);
-  const method = token.methods.decreaseApproval(spender, subtractedValue);
-  const response = await sendTx(method);
-  return response;
-}
-
-async function transferFrom(tokenAddress, from, to, value) {
-  value = convertToWei(value);
-  const token = tokenAt(tokenAddress, web3);
-  const method = token.methods.transferFrom(from, to, value);
-  const response = await sendTx(method);
-  return response;
-}
-
-async function sendTx(method) {
-  let response = {
-    error: true,
-    message: ""
-  };
-  try {
-    const accounts = await getAccounts();
-    const tx = await method.send({
-        from: accounts[0]
-    });
-    response.error = false;
-    response.message = tx.transactionHash;
-  } catch (err) {
-    response.message = err.message.split("\n")[0];
-  }
-  return response;
-}
-
-
-async function getAccounts() {
-  const accounts = await web3.eth.getAccounts();
-  return accounts;
-}
-
-function convertToEther(value) {
-  return web3.utils.fromWei(value, 'ether');
-}
-
-function convertToWei(value) {
-  return web3.utils.toWei(value);
-}
 
 
 
 
 export default {
-  totalSupply, balanceOf, transfer, getSummary, convertToEther, 
-  getAccounts, allowance, approve, increaseApproval, decreaseApproval,
-  sendTx, transferFrom
+  getStandarERC20Price
 }
 
  

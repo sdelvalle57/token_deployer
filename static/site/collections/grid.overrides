@@ -4,3 +4,8 @@
 .ui.grid:last-child {
     margin-bottom: 80px;
 }
+
+.ui.celled.grid.gridIndex {
+    max-height: 40vh;
+    min-height: 22vh;
+}

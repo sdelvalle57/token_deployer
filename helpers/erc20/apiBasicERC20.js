@@ -1,7 +1,7 @@
 import web3 from '../../ethereum/api/web3';
 import sendTx from '../web3TxHandler';
 import solver from '../solver';
-import basicERC20 from '../../ethereum/api/basicERC20';
+import basicERC20 from '../../ethereum/api/erc20/basicERC20';
 
 
 /* reading functions */
