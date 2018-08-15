@@ -5172,6 +5172,10 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.primary.button.fullWidth {
+  width: 100%;
+}
 /*!
  * # Semantic UI 2.3.3 - Container
  * http://github.com/semantic-org/semantic-ui/
@@ -5348,11 +5352,11 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   color: transparent;
 }
 
-.ui.container.contResponse.red {
+.ui.container.red {
   color: #9F3A38;
 }
 
-.ui.container.contResponse.normal {
+.ui.container.normal {
   color: rgba(0, 0, 0, 0.4);
 }
 /*!
@@ -19111,6 +19115,10 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.padded.segment.ownerIndex {
+  margin-bottom: 70px;
+}
 /*!
  * # Semantic UI 2.3.3 - Step
  * http://github.com/semantic-org/semantic-ui/
@@ -23444,6 +23452,10 @@ ol.ui.horizontal.list li:before,
 .ui.celled.grid.gridIndex {
   max-height: 40vh;
   min-height: 22vh;
+}
+
+.ui.celled.grid.lastGridIndex {
+  margin-bottom: 0px;
 }
 /*
  * # Semantic - Menu

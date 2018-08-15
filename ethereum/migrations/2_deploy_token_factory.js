@@ -1,11 +1,11 @@
-var TokenFactoryDataHolder = artifacts.require("./TokenFactoryDataHolder.sol");
-var TokenFactory = artifacts.require("./TokenFactory.sol");
+var ERC20FactoryDataHolder = artifacts.require("./ERC20FactoryDataHolder.sol");
+var ERC20Factory = artifacts.require("./ERC20Factory.sol");
 
 module.exports = (deployer) => {
-  deployer.deploy(TokenFactory).then(() => {
-    return deployer.deploy(TokenFactoryDataHolder, TokenFactory.address);
+  deployer.deploy(ERC20Factory).then(() => {
+    return deployer.deploy(ERC20FactoryDataHolder, ERC20Factory.address);
   }).then(async () => {
-      const tokenFactory = await TokenFactory.deployed();
-      await tokenFactory.setDataHolder(TokenFactoryDataHolder.address);
+      const erc20Factory = await ERC20Factory.deployed();
+      await erc20Factory.setDataHolder(ERC20FactoryDataHolder.address);
   });
 };

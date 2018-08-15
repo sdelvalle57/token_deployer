@@ -9,3 +9,7 @@
     max-height: 40vh;
     min-height: 22vh;
 }
+
+.ui.celled.grid.lastGridIndex {
+    margin-bottom: 0px;
+}

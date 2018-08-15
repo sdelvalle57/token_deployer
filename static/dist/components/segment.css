@@ -815,3 +815,6 @@
          Site Overrides
 *******************************/
 
+.ui.padded.segment.ownerIndex {
+  margin-bottom: 70px;
+}

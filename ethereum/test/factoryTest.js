@@ -38,6 +38,7 @@ beforeEach(async () =>{
 
 contract('ERC20 Token Factory', () =>{
   describe("Checks deployments", () => {
+    
     it('deploys TokenFactory contract', async ()=>{
       assert.ok(tokenFactory.options.address);
     });
@@ -55,10 +56,11 @@ contract('ERC20 Token Factory', () =>{
       const implementation = await tokenFactoryDataHolder.methods.tokenFactoryImpl().call();
       assert.equal(implementation, tokenFactory.options.address);
     });
+  
 
     it('sets tokens prices', async ()=>{
       try {
-        await tokenFactory.methods.setStandardERC20Price("2000").send({
+        await tokenFactory.methods.setPrice(1, "2000").send({
           from: accounts[0],
           gas: '600000'
         });
@@ -66,13 +68,14 @@ contract('ERC20 Token Factory', () =>{
       } catch (e) {
         assert.ok(false, e);
       }
-      const price = await tokenFactoryDataHolder.methods.getStandarERC20Price().call();
+      const price = await tokenFactoryDataHolder.methods.getPrice(1).call();
       assert.equal(price, "2000");
     });
 
+    
     it('tries to set tokens prices by another account', async ()=>{
       try {
-        await tokenFactory.methods.setStandardERC20Price("3000").send({
+        await tokenFactory.methods.setPrice(0, "3000").send({
           from: accounts[1],
           gas: '500000'
         });
@@ -80,7 +83,7 @@ contract('ERC20 Token Factory', () =>{
       } catch (e) {
         assert.ok(true, e);
       }
-      const price = await tokenFactoryDataHolder.methods.getStandarERC20Price().call();
+      const price = await tokenFactoryDataHolder.methods.getPrice(0).call();
       assert.notEqual(price, "3000");
     });
 
@@ -119,7 +122,7 @@ contract('ERC20 Token Factory', () =>{
 
       //try to set new values with old impl
       try {
-        await tokenFactory.methods.setStandardERC20Price("5000").send({
+        await tokenFactory.methods.setPrice(1, "5000").send({
           from: accounts[0],
           gas: '500000'
         });
@@ -127,12 +130,12 @@ contract('ERC20 Token Factory', () =>{
       } catch (e) {
         assert.ok(true, e);
       }
-      let price = await tokenFactoryDataHolder.methods.getStandarERC20Price().call();
+      let price = await tokenFactoryDataHolder.methods.getPrice(1).call();
       assert.notEqual(price, "5000");
 
       //set new values with new impl
       try {
-        await newTokenFactory.methods.setStandardERC20Price("4000").send({
+        await newTokenFactory.methods.setPrice(0, "4000").send({
           from: accounts[0],
           gas: '500000'
         });
@@ -140,7 +143,7 @@ contract('ERC20 Token Factory', () =>{
       } catch (e) {
         assert.ok(false, e);
       }
-      price = await tokenFactoryDataHolder.methods.getStandarERC20Price().call();
+      price = await tokenFactoryDataHolder.methods.getPrice(0).call();
       assert.equal(price, "4000");
     });
 
@@ -244,12 +247,12 @@ contract('ERC20 Token Factory', () =>{
 
     it('launches standardERC20 and withdraw', async () => {
       try {
-        await tokenFactory.methods.setStandardERC20Price("1000").send({
+        await tokenFactory.methods.setPrice(1, "1000").send({
           from: accounts[0],
           gas: '500000'
         })
-        const standardERC20Price = await tokenFactoryDataHolder.methods.getStandarERC20Price().call();
-        assert.equal("1000", standardERC20Price);
+        const price = await tokenFactoryDataHolder.methods.getPrice(1).call();
+        assert.equal("1000", price);
       } catch(e) {
         assert.ok(false, e);
       }
@@ -321,6 +324,7 @@ contract('ERC20 Token Factory', () =>{
         assert.ok(false, e);
       }
     });
+    
   });
 });
 

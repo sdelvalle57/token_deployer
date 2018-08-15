@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import { Input, Container, Label, Form, 
-    Message, Divider, Segment, Header, Grid, 
-    List, Step, Icon, Dropdown} from 'semantic-ui-react/dist/commonjs';
+import { Input, Container, Label, Form, Message, Divider, Segment, 
+    Header, Grid, List} from 'semantic-ui-react/dist/commonjs';
 import Layout from '../components/Layout'; 
 import { Router } from '../routes';
 import solver from '../helpers/solver';
 import apiBasicERC20 from '../helpers/erc20/apiBasicERC20';
+import apiFactoryERC20 from '../helpers/erc20/apiFactoryERC20';
+import OwnerFactory from '../components/erc20/OwnerFactory';
+import TokenDeployerStep from '../components/erc20/TokenDeployerStep';
 
 
 class InsertTokenAddress extends Component {
 
     state = {
+        factoryAddress: "",
         tokenAddress: "", 
         errroMessage: "",
         network: {},
         loading: false,
-        tokenType: '0'
+        
     }
 
     networkCallback = (network) => {
         this.setState({network: network.network});
+        this.setValues()
+    }
+
+    async setValues() {
+        const factoryAddress = "0x782ee203bac13e2d75ee58dd19d2164d8bd4c2eb";
+        const prices = await apiFactoryERC20.getPrices(factoryAddress);
+        //console.log(prices);
     }
 
     onSubmit = async (event) => {
@@ -117,42 +127,28 @@ class InsertTokenAddress extends Component {
         );
     }
 
-    renderNetwork() {
-        const {network} = this.state;
-        if(!network.networkNotSet) {
-            let networkMessage  = "";
-            switch(parseInt(network.networkId)) {
-                case 1: 
-                    networkMessage = "Main";
-                    break;
-                case 4:
-                    networkMessage = "Rinkeby";
-                    break;
-            }
-            return(<p>{networkMessage}</p>);
-        }
-        return null;
+    
+
+    
+
+    renderDeployment() {
+        const {network, factoryAddress} = this.state;
+        return(
+            <TokenDeployerStep 
+                network = {network}
+                factoryAddress = {factoryAddress}
+            />
+        );
     }
 
-    renderTypes() {
-        const options = [
-            { key: 'basic', text: 'Basic', description: 'Free', value: '0' },
-            { key: 'sytandard', text: 'Standard', description:'0.2 ETH', value: '1' }
-          ]
-        const {network, tokenType} = this.state;
-        let networkId = parseInt(network.networkId);
-        const isNetworkNotSelected = (networkId != 1 && networkId != 4);
+    renderAdmin() {
+        const {factoryAddress, network} = this.state;
+        
         return(
-            <Dropdown 
-                disabled={isNetworkNotSelected} 
-                value={tokenType}
-                options={options} 
-                onChange= {(e, result) => {
-                    this.setState({tokenType: result.value})
-                    }
-                }  >
-                
-            </Dropdown>
+            <OwnerFactory
+                factoryAddress = {factoryAddress}
+                network = {network}
+            />
         )
     }
 
@@ -179,62 +175,12 @@ class InsertTokenAddress extends Component {
                         
                     <Divider horizontal>Or</Divider>
                     <Header as='h3'>Deploy a Token</Header>
+                        {this.renderDeployment()}
 
-                    <Step.Group widths={7}>
-                        <Step active>
-                            <Icon name='globe' />
-                            <Step.Content>
-                                <Step.Title>Network</Step.Title>
-                                <Step.Description>{this.renderNetwork()}</Step.Description>
-                            </Step.Content>
-                        </Step>
-                        <Step >
-                            <Icon name='list' />
-                            <Step.Content>
-                                <Step.Title>Type</Step.Title>
-                                <Step.Description>{this.renderTypes()}</Step.Description>
-                            </Step.Content>
-                        </Step>
-                        <Step >
-                            <Icon name='list' />
-                            <Step.Content>
-                                <Step.Title>Select type</Step.Title>
-                                <Step.Description>{this.renderTypes()}</Step.Description>
-                            </Step.Content>
-                        </Step>
-                        <Step >
-                            <Icon name='list' />
-                            <Step.Content>
-                                <Step.Title>Select type</Step.Title>
-                                <Step.Description>{this.renderTypes()}</Step.Description>
-                            </Step.Content>
-                        </Step>
-                        <Step >
-                            <Icon name='list' />
-                            <Step.Content>
-                                <Step.Title>Select type</Step.Title>
-                                <Step.Description>{this.renderTypes()}</Step.Description>
-                            </Step.Content>
-                        </Step>
-                        <Step >
-                            <Icon name='list' />
-                            <Step.Content>
-                                <Step.Title>Select type</Step.Title>
-                                <Step.Description>{this.renderTypes()}</Step.Description>
-                            </Step.Content>
-                        </Step>
-                        <Step >
-                            <Icon name='list' />
-                            <Step.Content>
-                                <Step.Title>Select type</Step.Title>
-                                <Step.Description>{this.renderTypes()}</Step.Description>
-                            </Step.Content>
-                        </Step>
-                    </Step.Group>
-                </Segment>
-                <div>
                     
-                </div>
+                </Segment>
+                {this.renderAdmin()}
+
             </Layout>
         )
     }

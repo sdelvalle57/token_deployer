@@ -18,12 +18,15 @@
       position: absolute;
       max-width: 90% !important;
       color: transparent;
+      overflow: auto;
   }
 
-  .ui.container.contResponse.red {
+  .ui.container.red {
        color: @negativeTextColor;
   }
 
-  .ui.container.contResponse.normal {
+  .ui.container.normal {
       color: rgba(0,0,0,.4);
   }
+
+
