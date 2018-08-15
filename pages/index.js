@@ -18,18 +18,23 @@ class InsertTokenAddress extends Component {
         errroMessage: "",
         network: {},
         loading: false,
+        prices: []
+    }
+
+    networkCallback = (response) => {
+        const network = response.network;
+        const factoryAddress = "0xcc1fe6b032609eadff0718d98d83cc6f1faaa975";
+        if(network.networkId == "1") 
+            factoryAddress = "putTheAddressOfTheMainNet";
+            this.setState({network, factoryAddress});
+        this.setValues()
         
     }
 
-    networkCallback = (network) => {
-        this.setState({network: network.network});
-        this.setValues()
-    }
-
     async setValues() {
-        const factoryAddress = "0x782ee203bac13e2d75ee58dd19d2164d8bd4c2eb";
+        const {factoryAddress} = this.state;
         const prices = await apiFactoryERC20.getPrices(factoryAddress);
-        //console.log(prices);
+        this.setState({prices});
     }
 
     onSubmit = async (event) => {
@@ -132,22 +137,24 @@ class InsertTokenAddress extends Component {
     
 
     renderDeployment() {
-        const {network, factoryAddress} = this.state;
+        const {network, factoryAddress, prices} = this.state;
         return(
             <TokenDeployerStep 
                 network = {network}
                 factoryAddress = {factoryAddress}
+                prices = {prices}
             />
         );
     }
 
     renderAdmin() {
-        const {factoryAddress, network} = this.state;
+        const {factoryAddress, network, prices} = this.state;
         
         return(
             <OwnerFactory
                 factoryAddress = {factoryAddress}
                 network = {network}
+                prices = {prices}
             />
         )
     }

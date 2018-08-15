@@ -19,7 +19,7 @@ contract ERC20Factory is ERC20FactoryInterface, Ownable  {
     }
 
     function setPrice(uint8 _index, uint256 _price) external onlyOwner  {
-        require(_price >0, "Price must be greater than 0");
+        require(_price >= 0, "Price must be equal or greater than 0");
         dataHolder.setPrice(_index, _price);
     }
 

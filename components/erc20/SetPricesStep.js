@@ -9,6 +9,7 @@ class SetPricesStep extends Component {
     state = {
         factoryAddress: this.props.factoryAddress,
         network: this.props.network,
+        prices: this.props.prices,
         tokenType: '0',
         loading: false,
         price: '',
@@ -20,7 +21,8 @@ class SetPricesStep extends Component {
     componentWillReceiveProps(nextProps) {
         this.setState({
             factoryAddress: nextProps.factoryAddress,
-            network: nextProps.network
+            network: nextProps.network,
+            prices: nextProps.prices
         });
     }
 
@@ -52,11 +54,12 @@ class SetPricesStep extends Component {
     }
 
     renderTypes() {
-        const {network} = this.state;
+        const {network, prices} = this.state;
         return(
             <TokenTypesDropdown
                 network = {network}
-                callback = {this.tokenTypesDropdownCallback}/>
+                callback = {this.tokenTypesDropdownCallback}
+                prices = {prices}/>
         );
     }
 

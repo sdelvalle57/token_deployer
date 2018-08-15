@@ -8,13 +8,15 @@ class TokenDeployerStep extends Component {
     state = {
         factoryAddress: this.props.factoryAddress,
         network: this.props.network,
-        tokenType: '0',
+        prices: this.props.prices,
+        tokenType: '0'
     };  
 
     componentWillReceiveProps(nextProps) {
         this.setState({
             factoryAddress: nextProps.factoryAddress,
-            network: nextProps.network
+            network: nextProps.network,
+            prices: nextProps.prices
         });
     }
 
@@ -40,11 +42,12 @@ class TokenDeployerStep extends Component {
     }
 
     renderTypes() {
-        const {network} = this.state;
+        const {network, prices} = this.state;
         return(
             <TokenTypesDropdown
                 network = {network}
-                callback = {this.tokenTypesDropdownCallback}/>
+                callback = {this.tokenTypesDropdownCallback}
+                prices = {prices}/>
         );
     }
 
