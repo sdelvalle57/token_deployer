@@ -555,3 +555,6 @@
 .ui.input.cardInput {
   width: 100%;
 }
+.ui.input.deployStep {
+  width: 120px;
+}

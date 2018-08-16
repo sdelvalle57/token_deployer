@@ -5350,6 +5350,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   position: absolute;
   max-width: 90% !important;
   color: transparent;
+  overflow: auto;
 }
 
 .ui.container.red {
@@ -14830,6 +14831,10 @@ img.ui.bordered.image {
 .ui.input.cardInput {
   width: 100%;
 }
+
+.ui.input.deployStep {
+  width: 120px;
+}
 /*!
  * # Semantic UI 2.3.3 - Label
  * http://github.com/semantic-org/semantic-ui/
@@ -19815,6 +19820,10 @@ ol.ui.horizontal.list li:before,
   position: fixed;
   line-height: 0.8em;
   z-index: 10;
+}
+
+.ui.steps .step > .icon {
+  font-size: 2em;
 }
 /*!
  * # Semantic UI 2.3.3 - Breadcrumb

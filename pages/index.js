@@ -18,14 +18,15 @@ class InsertTokenAddress extends Component {
         errroMessage: "",
         network: {},
         loading: false,
-        prices: []
+        prices: [],
+        factoryOwner: ""
     }
 
     networkCallback = (response) => {
         const network = response.network;
-        const factoryAddress = "0xcc1fe6b032609eadff0718d98d83cc6f1faaa975";
+        let factoryAddress = "0xcc1fe6b032609eadff0718d98d83cc6f1faaa975";
         if(network.networkId == "1") 
-            factoryAddress = "putTheAddressOfTheMainNet";
+            factoryAddress = "0xcc1fe6b032609eadff0718d98d83cc6f1faaa976";
             this.setState({network, factoryAddress});
         this.setValues()
         
@@ -34,7 +35,8 @@ class InsertTokenAddress extends Component {
     async setValues() {
         const {factoryAddress} = this.state;
         const prices = await apiFactoryERC20.getPrices(factoryAddress);
-        this.setState({prices});
+        const factoryOwner = await apiFactoryERC20.getOwner(factoryAddress);
+        this.setState({prices, factoryOwner});
     }
 
     onSubmit = async (event) => {
@@ -66,6 +68,12 @@ class InsertTokenAddress extends Component {
             this.onSubmit();
         }, 350);
         
+    }
+
+    isOwner() {
+        const {network, factoryOwner} = this.state;
+        return(!network.networkNotSet && !network.providerNotSet && !network.notLogged
+        && network.accounts && network.accounts.length > 0 && network.accounts[0] == factoryOwner)
     }
 
     renderInput() {
@@ -149,14 +157,16 @@ class InsertTokenAddress extends Component {
 
     renderAdmin() {
         const {factoryAddress, network, prices} = this.state;
-        
-        return(
-            <OwnerFactory
-                factoryAddress = {factoryAddress}
-                network = {network}
-                prices = {prices}
-            />
-        )
+        if(this.isOwner()) {
+            return(
+                <OwnerFactory
+                    factoryAddress = {factoryAddress}
+                    network = {network}
+                    prices = {prices}
+                />
+            );
+        }
+        return null;
     }
 
     // 

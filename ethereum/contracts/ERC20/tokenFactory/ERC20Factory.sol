@@ -38,7 +38,7 @@ contract ERC20Factory is ERC20FactoryInterface, Ownable  {
 
     function createBasicToken(string _name, string _symbol, uint256 _initialSupply) external payable {
         BasicERC20 token = new BasicERC20(_name, _symbol, _initialSupply);
-        token.transferOwnership(msg.sender);
+        _setOwnerhsip(token);
         dataHolder.addBasicToken(msg.sender, address(token));
         if(msg.value > 0) {
             dataHolder.addFunds(msg.value); 
@@ -49,10 +49,15 @@ contract ERC20Factory is ERC20FactoryInterface, Ownable  {
     function createStandardToken(string _name, string _symbol, uint256 _initialSupply) external payable {
         require(msg.value >= dataHolder.getPrice(1), "Value sent is not enough");
         StandardERC20 token = new StandardERC20(_name, _symbol, _initialSupply);
-        token.transferOwnership(msg.sender);
+        _setOwnerhsip(token);
         dataHolder.addStandardToken(msg.sender, address(token));
         dataHolder.addFunds(msg.value); 
         emit FundAdded(msg.value);
+    }
+
+    function _setOwnerhsip(BasicERC20 _token) private {
+        _token.transfer(msg.sender, _token.balanceOf(this));
+        _token.transferOwnership(msg.sender);
     }
 
     function getDataHolder() external view  returns(address) {

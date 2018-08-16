@@ -8,3 +8,7 @@
     z-index: 10;
 }
 
+.ui.steps .step>.icon {
+    font-size: 2em;
+}
+

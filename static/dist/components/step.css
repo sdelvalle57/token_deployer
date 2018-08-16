@@ -630,3 +630,6 @@
   line-height: 0.8em;
   z-index: 10;
 }
+.ui.steps .step > .icon {
+  font-size: 2em;
+}

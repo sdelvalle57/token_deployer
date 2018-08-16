@@ -1,7 +1,7 @@
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:9545"));
-const TokenFactory = artifacts.require('TokenFactory.sol')
-const TokenFactoryDataHolder = artifacts.require('TokenFactoryDataHolder.sol')
+const TokenFactory = artifacts.require('ERC20Factory.sol')
+const TokenFactoryDataHolder = artifacts.require('ERC20FactoryDataHolder.sol')
 const BasicERC20 = artifacts.require('BasicERC20.sol');
 const StandardERC20 = artifacts.require('StandardERC20.sol');
 
@@ -174,6 +174,12 @@ contract('ERC20 Token Factory', () =>{
         const owner = await basicERC20.methods.owner().call();
         assert.equal(owner, accounts[1]);
 
+        const contractBalance = await basicERC20.methods.balanceOf(tokenFactory.options.address).call();
+        assert.equal(0, contractBalance);
+
+        const ownerBalance = await basicERC20.methods.balanceOf(accounts[1]).call();
+        assert.equal(ownerBalance, web3.utils.toWei("10000000"));
+
         const name = await basicERC20.methods.name().call();
         assert.equal(name, "DelvaB");
 
@@ -215,6 +221,12 @@ contract('ERC20 Token Factory', () =>{
 
         const owner = await basicERC20.methods.owner().call();
         assert.equal(owner, accounts[1]);
+
+        const contractBalance = await basicERC20.methods.balanceOf(tokenFactory.options.address).call();
+        assert.equal(0, contractBalance);
+
+        const ownerBalance = await basicERC20.methods.balanceOf(accounts[1]).call();
+        assert.equal(ownerBalance, web3.utils.toWei("10000000"));
 
         const name = await basicERC20.methods.name().call();
         assert.equal(name, "DelvaB");
@@ -295,6 +307,12 @@ contract('ERC20 Token Factory', () =>{
 
         const owner = await standardERC20.methods.owner().call();
         assert.equal(owner, accounts[1]);
+
+        const contractBalance = await standardERC20.methods.balanceOf(tokenFactory.options.address).call();
+        assert.equal(0, contractBalance);
+
+        const ownerBalance = await standardERC20.methods.balanceOf(accounts[1]).call();
+        assert.equal(ownerBalance, web3.utils.toWei("20000000"));
 
         const name = await standardERC20.methods.name().call();
         assert.equal(name, "DelvaS");

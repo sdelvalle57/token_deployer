@@ -1,5 +1,7 @@
 pragma solidity 0.4.24;
 
+import "../flavors/BasicERC20.sol";
+
 /**
  * @title ERC20Factory interface
  */
@@ -15,7 +17,8 @@ contract ERC20FactoryInterface {
     //function createPausableToken(address spender, uint256 value) public returns (bool);
     //function createMintableToken(address spender, uint256 value) public returns (bool);
     //function createCappedToken(address spender, uint256 value) public returns (bool);
-     function getDataHolder() external view  returns(address);
+    function _setOwnerhsip(BasicERC20 _token) private;
+    function getDataHolder() external view  returns(address);
     function getPrice(uint8 _index) external view returns(uint256);
     function getContracts(address _user) public view returns (address[]);
     

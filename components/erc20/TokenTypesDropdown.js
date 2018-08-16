@@ -17,11 +17,9 @@ class TokenDeployerStep extends Component {
     }
 
     getOptions(prices) {
-        
-        
 
         for(let j = 0; j < prices.length; j++) {
-            prices[j] = parseInt(prices[j]);
+            prices[j] = parseFloat(prices[j]);
             
         }
         const options = [
@@ -34,7 +32,6 @@ class TokenDeployerStep extends Component {
 
     render() {   
         const {prices} = this.state;
-        console.log(prices);
         if(prices == null || prices.length == 0) return null;
         const options = this.getOptions(prices);
         const {network, tokenType} = this.state;

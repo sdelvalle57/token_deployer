@@ -155,6 +155,7 @@
   position: absolute;
   max-width: 90% !important;
   color: transparent;
+  overflow: auto;
 }
 .ui.container.red {
   color: #9F3A38;
