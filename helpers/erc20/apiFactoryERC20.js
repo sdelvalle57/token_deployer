@@ -1,5 +1,6 @@
 import web3 from '../../ethereum/api/web3';
 import erc20FactoryAt from '../../ethereum/api/erc20/erc20Factory';
+import erc20DataHolderAt from '../../ethereum/api/erc20/erc20DataHolder';
 import sendTx from '../web3TxHandler';
 import sendTxWithValue from '../web3TxValueHandler';
 import solver from '../solver';
@@ -20,6 +21,12 @@ async function getOwner(factoryAddress) {
   const factory = erc20FactoryAt(factoryAddress, web3);
   const owner = await factory.methods.owner().call();
   return owner;
+}
+
+async function getContracts(factoryAddress, who) {
+  const factory = erc20FactoryAt(factoryAddress, web3);
+  const contracts = await factory.methods.getContracts(who).call();
+  return contracts; 
 }
 
 
@@ -52,7 +59,7 @@ async function createToken(factoryAddress, type, name, symbol, supply, value) {
 
 
 export default {
-  getPrices, setPrice, getOwner, createToken
+  getPrices, setPrice, getOwner, createToken, getContracts
 }
 
  

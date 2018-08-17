@@ -165,9 +165,6 @@ contract('ERC20 Token Factory', () =>{
         const contracts = await tokenFactoryDataHolder.methods.getContracts(accounts[1]).call();
         assert.equal(tokenDeployed, contracts[0]);
 
-        const tokenType = await tokenFactoryDataHolder.methods.token(tokenDeployed).call();
-        assert.equal(0, tokenType);
-
         const basicERC20 = new web3.eth.Contract(
           JSON.parse(JSON.stringify(BasicERC20.abi)), tokenDeployed); //load it the web3 way
 
@@ -212,9 +209,6 @@ contract('ERC20 Token Factory', () =>{
 
         const contracts = await tokenFactoryDataHolder.methods.getContracts(accounts[1]).call();
         assert.equal(tokenDeployed, contracts[0]);
-
-        const tokenType = await tokenFactoryDataHolder.methods.token(tokenDeployed).call();
-        assert.equal(0, tokenType);
 
         const basicERC20 = new web3.eth.Contract(
           JSON.parse(JSON.stringify(BasicERC20.abi)), tokenDeployed); //load it the web3 way
@@ -298,9 +292,6 @@ contract('ERC20 Token Factory', () =>{
 
         const contracts = await tokenFactoryDataHolder.methods.getContracts(accounts[1]).call();
         assert.equal(tokenDeployed, contracts[0]);
-
-        const tokenType = await tokenFactoryDataHolder.methods.token(tokenDeployed).call();
-        assert.equal(1, tokenType);
 
         const standardERC20 = new web3.eth.Contract(
           JSON.parse(JSON.stringify(StandardERC20.abi)), tokenDeployed); //load it the web3 way

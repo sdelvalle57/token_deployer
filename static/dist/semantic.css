@@ -5360,6 +5360,10 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 .ui.container.normal {
   color: rgba(0, 0, 0, 0.4);
 }
+
+.ui.container.verticalStepResponse.normal {
+  overflow: auto;
+}
 /*!
  * # Semantic UI 2.3.3 - Divider
  * http://github.com/semantic-org/semantic-ui/
@@ -14833,7 +14837,7 @@ img.ui.bordered.image {
 }
 
 .ui.input.deployStep {
-  width: 120px;
+  width: 140px;
 }
 /*!
  * # Semantic UI 2.3.3 - Label
@@ -17364,6 +17368,14 @@ ol.ui.horizontal.list li:before,
 .ui.list.listIndex {
   overflow: auto;
   max-height: -webkit-fill-available;
+}
+
+.ui.list > .item .header.headerIndexList {
+  display: -webkit-inline-box;
+}
+
+.ui.list > .item > .content.contentIndexList {
+  display: inline-block;
 }
 /*!
  * # Semantic UI 2.3.3 - Loader

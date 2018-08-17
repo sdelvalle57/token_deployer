@@ -8,14 +8,6 @@ import "../../utils/SafeMath.sol";
 contract ERC20FactoryDataHolder {
     using SafeMath for uint256;
 
-    enum TokenType {
-        BASIC_ERC20,
-        STANDARD_ERC20,
-        BURNABLE_ERC20,
-        PAUSABLE_ERC20,
-        MINTABLE_ERC20
-    }
-
     uint256 constant public VERSION = 1;
 
     uint256 public fundsRaised;
@@ -25,10 +17,12 @@ contract ERC20FactoryDataHolder {
 
     address[] public basicTokensDeployed;
     address[] public standardTokensDeployed;
+    address[] public standardBurnableTokensDeployed;
+    address[] public pausableTokensDeployed;
+    address[] public mintableTokensDeployed;
+    address[] public cappedTokensDeployed;
     address[] public users;
 
-
-    mapping (address => TokenType) public token;
     mapping (address => address[]) public contracts;
     mapping (uint8 => uint256) public price; //0 is basic, 1 is standard, ....
 
@@ -56,14 +50,36 @@ contract ERC20FactoryDataHolder {
     function addBasicToken(address _user, address _token) public onlyImplementation {
         users.push(_user);
         basicTokensDeployed.push(_token);
-        token[_token] = TokenType.BASIC_ERC20;
         contracts[_user].push(_token);
     }
 
     function addStandardToken(address _user, address _token) public onlyImplementation {
         users.push(_user);
         standardTokensDeployed.push(_token);
-        token[_token] = TokenType.STANDARD_ERC20;
+        contracts[_user].push(_token);
+    }
+
+    function addStandardBurnableToken(address _user, address _token) public onlyImplementation {
+        users.push(_user);
+        standardBurnableTokensDeployed.push(_token);
+        contracts[_user].push(_token);
+    }
+
+    function addPausableTokensDeployed(address _user, address _token) public onlyImplementation {
+        users.push(_user);
+        pausableTokensDeployed.push(_token);
+        contracts[_user].push(_token);
+    }
+
+    function addMintableTokensDeployed(address _user, address _token) public onlyImplementation {
+        users.push(_user);
+        mintableTokensDeployed.push(_token);
+        contracts[_user].push(_token);
+    }
+
+    function addCappedTokensDeployed(address _user, address _token) public onlyImplementation {
+        users.push(_user);
+        cappedTokensDeployed.push(_token);
         contracts[_user].push(_token);
     }
 

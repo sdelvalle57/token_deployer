@@ -415,12 +415,12 @@
           }
         ],
         "contractDependencies": [
-          1157,
           95,
           138,
+          479,
           170,
           416,
-          479
+          1261
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -430,7 +430,7 @@
           503,
           416,
           479,
-          1157,
+          1261,
           95,
           138,
           170
@@ -700,12 +700,12 @@
           }
         ],
         "contractDependencies": [
-          1157,
           95,
           138,
+          479,
           170,
           416,
-          479
+          1261
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -715,7 +715,7 @@
           503,
           416,
           479,
-          1157,
+          1261,
           95,
           138,
           170
@@ -909,5 +909,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-16T05:32:02.180Z"
+  "updatedAt": "2018-08-17T08:05:11.316Z"
 }

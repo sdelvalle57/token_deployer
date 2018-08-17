@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {  Dropdown } from 'semantic-ui-react/dist/commonjs';
+import {  Dropdown } from 'semantic-ui-react';
 
 class TokenDeployerStep extends Component {
     
