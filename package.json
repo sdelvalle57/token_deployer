@@ -11,6 +11,7 @@
     "react": "^16.4.2",
     "react-center": "^1.1.1",
     "react-dom": "^16.4.2",
+    "react-favicon": "0.0.14",
     "require-dot-file": "^0.4.0",
     "semantic-ui-react": "^0.80.2",
     "truffle": "^4.1.13",
