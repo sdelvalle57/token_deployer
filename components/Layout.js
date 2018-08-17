@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Head from 'next/head'
 import { Container } from 'semantic-ui-react';
-import Favicon from 'react-favicon';
 import web3 from '../ethereum/api/web3';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -17,6 +16,15 @@ class Layout extends Component {
             accounts: [],
             message: '',
             contractError : false
+        },
+        lastFetched: {
+            providerNotSet: false,
+            networkNotSet: false,
+            networkId: 0,
+            notLogged: false,
+            accounts: [],
+            message: '',
+            contractError : false
         }
     }
 
@@ -29,15 +37,16 @@ class Layout extends Component {
      }
 
      setCheckNetworkInterval = () => {
-        let {network} = this.state;
+        let {network, lastFetched} = this.state;
         this.interval = setInterval(() => {
-            network.message = '';
-            network.accounts = []
             if (typeof window.web3 == 'undefined') {
                 network.providerNotSet = true;
                 network.message = "Use a provider to send the Transaction";
-                this.setState({network});
-                this.props.callback({network});
+                if(!lastFetched.providerNotSet) {
+                    lastFetched.providerNotSet = true;
+                    this.setState({network, lastFetched});
+                    this.props.callback({network:network});
+                }
                 return;
             }
             network.providerNotSet = false;
@@ -48,7 +57,11 @@ class Layout extends Component {
                     if(netId != "1" && netId != "4") {
                         network.message =  "Please select the Main or Rinkeby network";
                         network.networkNotSet = true;
-                        this.props.callback({network});
+                        if(!lastFetched.networkNotSet){
+                            lastFetched.networkNotSet = true;
+                            this.setState({network, lastFetched});
+                            this.props.callback({network});
+                        }
                         return;
                     } else {
                         network.networkNotSet = false;
@@ -57,11 +70,14 @@ class Layout extends Component {
                     const accounts = await web3.eth.getAccounts();  
                     if(!accounts[0]) {
                         network.message = "Please login to the network";
+                        network.accounts = []
                         network.notLogged = true;
                     } else {
                         network.accounts = accounts;
                         network.notLogged = false;
+                        network.message = "";
                     }
+                    
                     this.setState({network});
                     this.props.callback({network});
                 });
@@ -72,9 +88,6 @@ class Layout extends Component {
     render() {
         return (
             <Container >
-                <div>
-                    <Favicon url="/static/images/favicon.png" />
-                </div>
                 <Head>
                     <link 
                         rel="stylesheet" 

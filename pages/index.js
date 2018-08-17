@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Divider, Segment, Header, Dimmer, Loader, Icon} from 'semantic-ui-react';
+import { Divider, Segment, Header} from 'semantic-ui-react';
 import Layout from '../components/Layout'; 
 import apiFactoryERC20 from '../helpers/erc20/apiFactoryERC20';
 import TokenReader from '../components/TokenReader';
@@ -16,32 +16,24 @@ class InsertTokenAddress extends Component {
         network: {},
         loading: false,
         prices: [],
-        factoryOwner: "",
-        dimmerActive: true, 
-        contractError: false
+        factoryOwner: ""
     }
 
     networkCallback = (response) => {
         const network = response.network;
-        let factoryAddress = "0x001a50b7ca5a24b2cc905592eb4b07a71f1f5c1b";
+        let factoryAddress = "0xdf09b6d9855b0f5d3b0d66ac94254133e33d988f";
         if(network.networkId == "1") 
-            factoryAddress = "0x001a50b7ca5a24b2cc905592eb4b07a71f1f5c1c";
-        this.setState({network, factoryAddress});
-        this.setValues();
+            factoryAddress = "0xdf09b6d9855b0f5d3b0d66ac94254133e33d988";
+            this.setState({network, factoryAddress});
+        this.setValues()
         
     }
 
     async setValues() {
         const {factoryAddress} = this.state;
-        try {
-            const prices = await apiFactoryERC20.getPrices(factoryAddress);
-            const factoryOwner = await apiFactoryERC20.getOwner(factoryAddress);
-            this.setState({prices, factoryOwner, dimmerActive: false, contractError: false});
-        } catch (e) {
-            this.setState({dimmerActive: true, contractError: true})
-        }
-        
-        
+        const prices = await apiFactoryERC20.getPrices(factoryAddress);
+        const factoryOwner = await apiFactoryERC20.getOwner(factoryAddress);
+        this.setState({prices, factoryOwner});
     }
 
     isOwner() {
@@ -50,33 +42,8 @@ class InsertTokenAddress extends Component {
         && network.accounts && network.accounts.length > 0 && network.accounts[0] == factoryOwner)
     }
 
-    renderDimmer() {
-        const {dimmerActive} = this.state;
-        return(
-            <Dimmer active = {dimmerActive}>
-                {this.renderDimmerContent()}
-            </Dimmer>
-        );
-    }
-
-    renderDimmerContent() {
-        const {contractError} = this.state;
-        if(contractError) {
-            return (
-                <Header as='h2' icon inverted>
-                    <Icon name='broken chain' />
-                    Please try another network
-                </Header>
-            );
-        } else {
-            return <Loader size='large'>Loading</Loader>;
-        }
-        
-    }
-
     renderTokenReader() {
-        const {network, factoryAddress, contractError} = this.state;
-        if(contractError) return null;
+        const {network, factoryAddress} = this.state;
         return(
             <TokenReader 
                 network = {network}
@@ -86,8 +53,7 @@ class InsertTokenAddress extends Component {
     
 
     renderDeployment() {
-        const {network, factoryAddress, prices, contractError} = this.state;
-        if(contractError) return null;
+        const {network, factoryAddress, prices} = this.state;
         return(
             <TokenDeployerStep 
                 network = {network}
@@ -98,8 +64,7 @@ class InsertTokenAddress extends Component {
     }
 
     renderAdmin() {
-        const {factoryAddress, network, prices, contractError} = this.state;
-        if(contractError) return null;
+        const {factoryAddress, network, prices} = this.state;
         if(this.isOwner()) {
             return(
                 <OwnerFactory
@@ -115,17 +80,22 @@ class InsertTokenAddress extends Component {
     // 
 
     render() {
+        
         return (
             <Layout callback={this.networkCallback}>
-                {this.renderDimmer()}
                 <Segment padded>
                     <Header as='h2'textAlign='center'>ERC20 Token</Header>
                     {this.renderTokenReader()}
+                    
+                        
                     <Divider horizontal>Or</Divider>
                     <Header as='h3'>Deploy a Token</Header>
-                    {this.renderDeployment()}                    
+                    {this.renderDeployment()}
+
+                    
                 </Segment>
                 {this.renderAdmin()}
+
             </Layout>
         )
     }

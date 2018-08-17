@@ -29,6 +29,8 @@ class MyDeployedTokens extends Component {
                     summaryToken[address] = summary;
                 }
             }
+        } else {
+            this.setState({myDeployedTokens: []});
         }
         this.setState({
             network, factoryAddress, summaryToken
