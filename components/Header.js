@@ -86,7 +86,7 @@ class Header extends Component {
         <Container >
           <Menu style={{ marginTop: '10px' }}>
             <Link route="/">
-              <a className="item">ERC-token.online</a>
+              <a className="item">ERC20 Token</a>
             </Link>
       
             <Menu.Menu position="right">

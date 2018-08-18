@@ -9,12 +9,23 @@ module.exports = {
       network_id: "*", // Match any network id
       ///from: "0x9426bAb45448D7830F4e690d34f553Bec97e94Cd"
     },
+
     rinkeby: {
       provider: () => {
-        return new HDWalletProvider(privKey, "https://rinkeby.infura.io/qAudSy87uo2SByV57ETq")
+        return new HDWalletProvider(privKey, "https://rinkeby.infura.io/v3/ccef7c32fcd94fb1a7683538e5d18aa2")
       },
       network_id: '4',
       gas: 4612388,
+    },
+
+    live: {
+      provider: () => {
+        return new HDWalletProvider("", "https://mainnet.infura.io/v3/ccef7c32fcd94fb1a7683538e5d18aa2")
+        
+      },
+      network_id: '1',
+      gas: 4712388,
+      gasPrice: 4
     }
   }
 };

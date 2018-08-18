@@ -2,12 +2,14 @@ const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:9545"));
 const TokenFactory = artifacts.require('ERC20Factory.sol')
 const TokenFactoryDataHolder = artifacts.require('ERC20FactoryDataHolder.sol')
+const TokenFactoryFundsHolder = artifacts.require('ERC20FactoryFundsHolder.sol')
 const BasicERC20 = artifacts.require('BasicERC20.sol');
 const StandardERC20 = artifacts.require('StandardERC20.sol');
 
 let accounts;
 let tokenFactory;
 let tokenFactoryDataHolder;
+let tokenFactoryFundsHolder;
 
 beforeEach(async () =>{
   accounts = await web3.eth.getAccounts();
@@ -28,11 +30,22 @@ beforeEach(async () =>{
     JSON.parse(JSON.stringify(TokenFactoryDataHolder.abi)))
   .deploy({
     data: TokenFactoryDataHolder.bytecode,
-    arguments: [tokenFactory.options.address]
+    arguments: [tokenFactory.options.address, 0]
   })
   .send({from: accounts[0], gas: '6000000'}); 
 
-  await tokenFactory.methods.setDataHolder(tokenFactoryDataHolder.options.address)
+  tokenFactoryFundsHolder = await new web3.eth.Contract(
+    JSON.parse(JSON.stringify(TokenFactoryFundsHolder.abi)))
+  .deploy({
+    data: TokenFactoryFundsHolder.bytecode,
+    arguments: [tokenFactory.options.address, 0]
+  })
+  .send({from: accounts[0], gas: '6000000'});
+
+  await tokenFactory.methods.setHolders(
+    tokenFactoryDataHolder.options.address,
+    tokenFactoryFundsHolder.options.address
+  )
   .send({from: accounts[0], gas:'1000000'})
 });
 
@@ -47,16 +60,23 @@ contract('ERC20 Token Factory', () =>{
       assert.ok(tokenFactoryDataHolder.options.address);
     });
 
-    it('checks dataholder set into the tokenFactory contract', async ()=>{
-      const dataHolder = await tokenFactory.methods.getDataHolder().call();
-      assert.equal(dataHolder, tokenFactoryDataHolder.options.address);
+    it('deploys TokenFactoryFundsHolder contract', async ()=>{
+      assert.ok(tokenFactoryFundsHolder.options.address);
     });
 
-    it('checks factory address set into the dataholder as implementation', async ()=>{
-      const implementation = await tokenFactoryDataHolder.methods.tokenFactoryImpl().call();
+    it('checks dataHolder and fundsHolder set into the tokenFactory contract', async ()=>{
+      const dataHolder = await tokenFactory.methods.getDataHolder().call();
+      assert.equal(dataHolder, tokenFactoryDataHolder.options.address);
+      const fundsHolder = await tokenFactory.methods.getFundsHolder().call();
+      assert.equal(fundsHolder, tokenFactoryFundsHolder.options.address);
+    });
+
+    it('checks factory address set into the dataHolder and fundsHolder as implementation', async ()=>{
+      let implementation = await tokenFactoryDataHolder.methods.tokenFactoryImpl().call();
+      assert.equal(implementation, tokenFactory.options.address);
+      implementation = await tokenFactoryFundsHolder.methods.tokenFactoryImpl().call();
       assert.equal(implementation, tokenFactory.options.address);
     });
-  
 
     it('sets tokens prices', async ()=>{
       try {
@@ -72,7 +92,6 @@ contract('ERC20 Token Factory', () =>{
       assert.equal(price, "2000");
     });
 
-    
     it('tries to set tokens prices by another account', async ()=>{
       try {
         await tokenFactory.methods.setPrice(0, "3000").send({
@@ -94,7 +113,7 @@ contract('ERC20 Token Factory', () =>{
       .send({from: accounts[0], gas: '5000000'});  
       const address = newTokenFactory.options.address;
 
-      //set the new implenetation
+      //set the new implemetation
       try {
         await tokenFactory.methods.setTokenFactoryImpl(address).send({
           from: accounts[0],
@@ -104,12 +123,18 @@ contract('ERC20 Token Factory', () =>{
       } catch (e) {
         assert.ok(false, e);
       }
-      const implementation = await tokenFactoryDataHolder.methods.tokenFactoryImpl().call();
+      let implementation = await tokenFactoryDataHolder.methods.tokenFactoryImpl().call();
       assert.equal(address, implementation);
+      implementation = await tokenFactoryFundsHolder.methods.tokenFactoryImpl().call();
+      assert.equal(address, implementation);
+      
 
       //set dataholder to newTokenFactory
       try {
-        await newTokenFactory.methods.setDataHolder(tokenFactoryDataHolder.options.address).send({
+        await newTokenFactory.methods.setHolders(
+          tokenFactoryDataHolder.options.address,
+          tokenFactoryFundsHolder.options.address
+        ).send({
           from: accounts[0],
           gas: '500000'
         });
@@ -119,6 +144,8 @@ contract('ERC20 Token Factory', () =>{
       }
       const dataHolder = await newTokenFactory.methods.getDataHolder().call();
       assert.equal(dataHolder, tokenFactoryDataHolder.options.address);
+      const fundsHolder = await newTokenFactory.methods.getFundsHolder().call();
+      assert.equal(fundsHolder, tokenFactoryFundsHolder.options.address);
 
       //try to set new values with old impl
       try {
@@ -146,6 +173,61 @@ contract('ERC20 Token Factory', () =>{
       price = await tokenFactoryDataHolder.methods.getPrice(0).call();
       assert.equal(price, "4000");
     });
+
+    it('launches new holders and set new versions on factory', async () => {
+      const tokenFactoryDataHolder2 = await new web3.eth.Contract(
+        JSON.parse(JSON.stringify(TokenFactoryDataHolder.abi)))
+      .deploy({
+        data: TokenFactoryDataHolder.bytecode,
+        arguments: [
+          tokenFactory.options.address, 
+          tokenFactoryDataHolder.options.address
+        ]
+      })
+      .send({from: accounts[0], gas: '6000000'}); 
+    
+      const tokenFactoryFundsHolder2 = await new web3.eth.Contract(
+        JSON.parse(JSON.stringify(TokenFactoryFundsHolder.abi)))
+      .deploy({
+        data: TokenFactoryFundsHolder.bytecode,
+        arguments: [
+          tokenFactory.options.address, 
+          tokenFactoryFundsHolder.options.address
+        ]
+      })
+      .send({from: accounts[0], gas: '6000000'});
+
+      await tokenFactory.methods.setHolders(
+        tokenFactoryDataHolder2.options.address,
+        tokenFactoryFundsHolder2.options.address
+      )
+      .send({from: accounts[0], gas:'1000000'})
+
+      const dataHolder = await tokenFactory.methods.getDataHolder().call();
+      assert.equal(dataHolder, tokenFactoryDataHolder2.options.address);
+
+      const fundsHolder = await tokenFactory.methods.getFundsHolder().call();
+      assert.equal(fundsHolder, tokenFactoryFundsHolder2.options.address);
+
+      const loadedDataHolder = new web3.eth.Contract(JSON.parse(
+        JSON.stringify(TokenFactoryDataHolder.abi)), dataHolder
+      ); 
+      let impl = await loadedDataHolder.methods.tokenFactoryImpl().call();
+      assert.equal(tokenFactory.options.address, impl);
+
+      const prevVersionDataHolder = await loadedDataHolder.methods.prevVersion().call();
+      assert.equal(prevVersionDataHolder, tokenFactoryDataHolder.options.address);
+
+      const loadedFundsHolder = new web3.eth.Contract(JSON.parse(
+        JSON.stringify(TokenFactoryFundsHolder.abi)), fundsHolder
+      ); 
+      impl = await loadedFundsHolder.methods.tokenFactoryImpl().call();
+      assert.equal(tokenFactory.options.address, impl);
+
+      const prevVersionFundsHolder = await loadedFundsHolder.methods.prevVersion().call();
+      assert.equal(prevVersionFundsHolder, tokenFactoryFundsHolder.options.address);
+      
+    })
 
     it('launches basicERC20 with no value', async () => {
       try {
@@ -231,7 +313,7 @@ contract('ERC20 Token Factory', () =>{
         const supply = await basicERC20.methods.totalSupply().call();
         assert.equal(supply, "10000000000000000000000000");
 
-        const fundsRaised = await tokenFactoryDataHolder.methods.fundsRaised().call();
+        const fundsRaised = await tokenFactoryFundsHolder.methods.fundsRaised().call();
         assert.equal("100", fundsRaised);
 
         let acc1Balance = await web3.eth.getBalance(accounts[1]);
@@ -243,7 +325,7 @@ contract('ERC20 Token Factory', () =>{
         acc1Balance = parseInt(acc1Balance)+100;
         assert.equal(acc1Balance, acc1BalanceNew)
 
-        const fundsWithdrawn = await tokenFactoryDataHolder.methods.fundsWithdrawn().call();
+        const fundsWithdrawn = await tokenFactoryFundsHolder.methods.fundsWithdrawn().call();
         assert.equal(fundsWithdrawn, "100");
 
       } catch(e) {
@@ -314,7 +396,7 @@ contract('ERC20 Token Factory', () =>{
         const supply = await standardERC20.methods.totalSupply().call();
         assert.equal(supply, "20000000000000000000000000");
 
-        const fundsRaised = await tokenFactoryDataHolder.methods.fundsRaised().call();
+        const fundsRaised = await tokenFactoryFundsHolder.methods.fundsRaised().call();
         assert.equal("1000", fundsRaised);
 
         let acc1Balance = await web3.eth.getBalance(accounts[1]);
@@ -326,7 +408,7 @@ contract('ERC20 Token Factory', () =>{
         acc1Balance = parseInt(acc1Balance)+1000;
         assert.equal(acc1Balance, acc1BalanceNew)
 
-        const fundsWithdrawn = await tokenFactoryDataHolder.methods.fundsWithdrawn().call();
+        const fundsWithdrawn = await tokenFactoryFundsHolder.methods.fundsWithdrawn().call();
         assert.equal(fundsWithdrawn, "1000");
 
       } catch(e) {

@@ -79,7 +79,7 @@ class TransferOwnershipCard extends Component {
                     {transfer.response.message}
                 </Container>
             );
-        } else if(transfer.response.ok){
+        } else if(transfer.response.ok && transfer.response.message!=""){
             let url = parseInt(network.networkId) == 1? "":"rinkeby.";
             url = "https://"+url+"etherscan.io/tx/"+transfer.response.message;
             return( 

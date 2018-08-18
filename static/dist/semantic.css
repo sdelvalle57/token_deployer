@@ -5357,6 +5357,10 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   color: #9F3A38;
 }
 
+.ui.container.green {
+  color: #21BA45;
+}
+
 .ui.container.normal {
   color: rgba(0, 0, 0, 0.4);
 }

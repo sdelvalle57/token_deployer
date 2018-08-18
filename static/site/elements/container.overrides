@@ -25,6 +25,10 @@
        color: @negativeTextColor;
   }
 
+  .ui.container.green {
+    color: @positiveColor;
+}
+
   .ui.container.normal {
       color: rgba(0,0,0,.4);
   }
