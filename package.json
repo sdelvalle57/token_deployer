@@ -4,6 +4,7 @@
   "description": "Interface to launch an ERC20 token based on the Open Zeppelin Framework",
   "main": "index.js",
   "dependencies": {
+    "ethereum-blockies-base64": "^1.0.2",
     "gulp": "^3.9.1",
     "next": "^6.1.1",
     "next-routes": "^1.4.2",

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { List, Header } from 'semantic-ui-react';
+import { List, Image } from 'semantic-ui-react';
+import makeBlockie from 'ethereum-blockies-base64';
 import apiFactoryERC20 from '../helpers/erc20/apiFactoryERC20';
 import apiBasicERC20 from '../helpers/erc20/apiBasicERC20';
 import solver from '../helpers/solver';
@@ -52,6 +53,12 @@ class MyDeployedTokens extends Component {
                 && summary.name != 'undefined' 
                 && summary.totalSupply != 'undefined')
     }
+
+    getBlockie(address) {
+        return blockies.create({
+            seed: address,
+        });
+    }
     
 
     renderMyTokens() {
@@ -72,9 +79,9 @@ class MyDeployedTokens extends Component {
             i++;
             return (
                 <List.Item as='a' key={i} onClick = {this.onItemClick.bind(this, address)} >
-                    <Header as='h4' className='headerIndexList'>{symbol}</Header>
+                    <Image avatar src={makeBlockie(address)} />
                     <List.Content className="contentIndexList" >
-                        <List.Header >{name}</List.Header>
+                        <List.Header >{name + "("+symbol+")"}</List.Header>
                         <List.Description>
                             {"supply: "+supply + " "+symbol+"s"} 
                         </List.Description>
