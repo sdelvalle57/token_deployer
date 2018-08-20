@@ -1,6 +1,5 @@
 import web3 from '../../ethereum/api/web3';
 import erc20FactoryAt from '../../ethereum/api/erc20/erc20Factory';
-import erc20DataHolderAt from '../../ethereum/api/erc20/erc20DataHolder';
 import sendTx from '../web3TxHandler';
 import sendTxWithValue from '../web3TxValueHandler';
 import solver from '../solver';

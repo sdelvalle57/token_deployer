@@ -23,8 +23,8 @@ class InsertTokenAddress extends Component {
         const network = response.network;
         let factoryAddress = "0x282388eeeaceacdad61d58743c28aea8ed7f4c59";
         if(network.networkId == "1") 
-            factoryAddress = "0xdf09b6d9855b0f5d3b0d66ac94254133e33d988";
-            this.setState({network, factoryAddress});
+            factoryAddress = "0x8198bc0ea73e0c0377e346e227ba9854b088e5eb";
+        this.setState({network, factoryAddress});
         this.setValues()
         
     }

@@ -11,7 +11,6 @@ class AllowanceCard extends Component {
         summary: this.props.summary,
         network: this.props.network,
         allowance: {'spender':'', 'owner':'', 'response':'', 'loading':false, 'error':false},
-        
     };  
 
     componentWillReceiveProps(nextProps) {

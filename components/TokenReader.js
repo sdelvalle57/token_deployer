@@ -63,7 +63,10 @@ class TokenReader extends Component {
     }
 
     renderInput() {
-        const tryAddress = "0x7bbd2895bf740e7771785854ee74ed401e803555";
+        const {network} = this.state;
+        let tryAddress = "0x7bbd2895bf740e7771785854ee74ed401e803555";
+        if(network.networkId == "1") 
+            tryAddress = " 0xFD2785a0b571bDE760015798157BA6065157E8f2";
         const {errroMessage, loading, tokenAddress} = this.state;
         return ( 
             <Container className='input'>
