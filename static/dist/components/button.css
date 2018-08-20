@@ -3888,3 +3888,6 @@
          Site Overrides
 *******************************/
 
+.ui.primary.button.fullWidth {
+  width: 100%;
+}

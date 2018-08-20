@@ -246,5 +246,4 @@ body.dimmable > .dimmer {
 }
 .ui.dimmer.cardDimmer {
   width: -webkit-fill-available;
-  height: 86%;
 }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Card, Dimmer, Loader, Header, Icon } from 'semantic-ui-react';
+import { Dimmer, Loader, Header, Icon, Menu, Segment } from 'semantic-ui-react';
 import Layout from '../../components/Layout'; 
-import api from '../../helpers/apiToken';
-import solver from '../../helpers/solver';
-import BasicToken from '../../components/BasicToken';
-import StandardToken from '../../components/StandardToken';
+import api from '../../helpers/erc20/apiBasicERC20';
+import TokenSummaryCard from '../../components/erc20/TokenSummaryCard';
+import BasicToken from '../../components/erc20/BasicToken';
+import StandardToken from '../../components/erc20/StandardToken';
+import TransferOwnership from '../../components/TransferOwnershipCard'
 import { Router } from '../../routes';
 
 
@@ -12,86 +13,57 @@ class ViewToken extends Component {
 
     state = {
         tokenAddress: this.props.url.query.tokenAddress, 
-        networkId: this.props.url.query.network,
         contractError: false,
         summary: {},
         web3:{},
         dimmerActive: true,
-        network : {
-            providerNotSet: false,
-            networkNotSet: false,
-            networkId: 0,
-            notLogged: false,
-            accounts: [],
-            message: '',
-            contractError : false
-        }
+        network : {},
+        activeItem: 0,
+        menuSelection: {
+            "basic":0,
+            "standard":1,
+            "ownership":9
+        },
+        myBalance: ''
     }
 
-    async componentDidMount() {
+    networkCallback = async (network) => {
+        await this.setValues(network.network);
+    }
+
+    async setValues(network) {
         const  tokenAddress = this.props.url.query.tokenAddress;
-        const networkId = this.props.url.query.network;
-        const summary = await api.getSummary(tokenAddress, networkId);
-        this.setCheckNetworkInterval();
+        const summary = await api.getSummary(tokenAddress, network.networkId);
+        let myBalance = 0;
         const dimmerActive =  typeof summary.name == 'undefined';
+        if(!dimmerActive) myBalance = await this.getBalance(tokenAddress, network);
         const contractError = dimmerActive;
-        console.log(dimmerActive + " "+contractError);
-        this.setState({summary, dimmerActive, contractError})
+        this.setState({summary, dimmerActive, contractError, network, myBalance})
     }
-
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
-
-    setCheckNetworkInterval = () => {
-        this.interval = setInterval(() => {
-            const {networkId} = this.state;
-            let network = {
-                providerNotSet: false,
-                networkNotSet: false,
-                networkId: 0,
-                notLogged: false,
-                accounts: [],
-                message: '',
-                contractError : false
-            }
-            if (typeof window.web3 == 'undefined') {
-                network.providerNotSet = true;
-                network.message("Use a provider to send the Transaction");
-                this.setState({network});
-                return;
-            }
-            if (typeof window.web3 != 'undefined') {
-                
-                window.web3.version.getNetwork(async (err, netId) => {
-                    if(netId == "1" || netId == "4") {
-                        if(netId == "1" && networkId != "1") {
-                            network.message = "Please select the Rinkeby network";
-                            network.networkNotSet = true;
-                        } else if(netId == "4" && networkId != "4") {
-                            network.message = "Please select the Main network";
-                            network.networkNotSet = true;
-                        }
-                        const accounts = await api.getAccounts(window.web3.currentProvider);
-                        network.accounts = accounts;
-                        network.networkId = netId;
-                        if(!accounts[0]) {
-                            network.message = "Please login to the network";
-                            network.notLogged = true;
-                        } 
-                    } else {
-                        network.message = networkId == 1 ? "Please select the Main network":
-                        "Please select the Rinkeby network";
-                        network.networkNotSet = true;
-                    }
-                    this.setState({network});
-                });
-            }
-        }, 1000);
-    }
+    
 
     onClick = () => {
         Router.pushRoute(`/`);
+    }
+
+    handleItemClick = (e, { id }) => {
+        this.setState({ activeItem: id });
+    }
+
+    async getBalance(tokenAddress, network) {
+        if(!network.networkNotSet && !network.providerNotSet && !network.notLogged
+        && network.accounts && network.accounts.length > 0){
+            const myBalance = await api.balanceOf(tokenAddress, network.accounts[0]);
+            
+            return myBalance;
+        }   
+        return null;
+    }
+
+    isOwner() {
+        const {network, summary} = this.state;
+        return(!network.networkNotSet && !network.providerNotSet && !network.notLogged
+        && network.accounts && network.accounts.length > 0 && network.accounts[0] == summary.owner)
     }
 
     renderDimmer() {
@@ -119,23 +91,40 @@ class ViewToken extends Component {
         
     }
 
-    /* Principal Rendering */
     renderSummaryCard() {
-        let {summary} = this.state;
-        if(typeof summary.totalSupply != 'undefined') {        
-            const items = [
-                {
-                    header: "Name and symbol: "+ summary.name+"("+summary.symbol+")",
-                    meta: summary.decimals + " decimals",
-                    description: "Total supply is "+solver.
-                        formatNumber(api.convertToEther(summary.totalSupply)) 
-                        +" "+ summary.symbol+"s",
-                    extra: 'owner: '+summary.owner
-                }
-            ];
-            return <Card.Group id='summaryCard' items={ items } />;
-        }
-        return null;
+        const {summary, myBalance} = this.state;
+        return(
+            <TokenSummaryCard
+                summary = {summary}
+                myBalance = {myBalance}
+            />);
+    }
+
+    renderTokenMenu() {
+        const { activeItem, menuSelection } = this.state;
+        return(
+            <Menu attached='top' tabular >
+                <Menu.Menu position="right">
+                    <Menu.Item 
+                        name={Object.keys(menuSelection)[0]} 
+                        id={menuSelection.basic}
+                        active={activeItem == menuSelection.basic} 
+                        onClick={this.handleItemClick} />
+                    <Menu.Item
+                        name={Object.keys(menuSelection)[1]}
+                        id={menuSelection.standard}
+                        active={activeItem == menuSelection.standard}
+                        onClick={this.handleItemClick}
+                    />
+                    <Menu.Item
+                        name={Object.keys(menuSelection)[2]}
+                        id={menuSelection.ownership}
+                        active={activeItem == menuSelection.ownership}
+                        onClick={this.handleItemClick}
+                    />
+                </Menu.Menu>
+            </Menu>
+        );
     }
 
 
@@ -157,20 +146,43 @@ class ViewToken extends Component {
             />);
     }
 
+    renderTransferOwnership() {
+        const {tokenAddress, network } = this.state;
+        const disabled = this.isOwner();
+        return (<TransferOwnership 
+            tokenAddress = {tokenAddress}
+            disabled = {!disabled}
+            network = {network}
+            />);
+    }
+
     render() {
-       
+        const {activeItem, menuSelection} = this.state;
+        let viewToRender;
+        switch (activeItem) {
+            case menuSelection.standard:
+                viewToRender = this.renderStandardToken();
+                break;
+            case menuSelection.ownership:
+                viewToRender = this.renderTransferOwnership();
+                break;
+            default:
+                viewToRender = this.renderBasicToken();
+                break;
+        }
         return (
-            <Layout>
+            <Layout callback = {this.networkCallback}>
                 {this.renderDimmer()}
                 <div>
                     {this.renderSummaryCard()}
-                    {this.renderBasicToken()}
-                    {this.renderStandardToken()}
+                    {this.renderTokenMenu()}
+
+                    <Segment attached='bottom'>
+                        {viewToRender}
+                    </Segment>
                 </div>
             </Layout>
-            
-            
-        )
+        );
     }
 }
 
