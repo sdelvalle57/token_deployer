@@ -18,6 +18,7 @@ class InsertTokenAddress extends Component {
         prices: [],
         factoryOwner: ""
     }
+    //we will add this comment
 
     networkCallback = (response) => {
         const network = response.network;
