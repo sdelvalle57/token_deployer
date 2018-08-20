@@ -1,3 +1,16 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.list.listIndex {
+    overflow: auto;
+    max-height: -webkit-fill-available;
+}
+
+.ui.list>.item .header.headerIndexList {
+    display: -webkit-inline-box;
+}
+
+.ui.list>.item>.content.contentIndexList {
+    display: inline-block;
+}

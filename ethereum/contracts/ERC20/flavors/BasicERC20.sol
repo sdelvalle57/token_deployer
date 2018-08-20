@@ -2,7 +2,11 @@ pragma solidity 0.4.24;
 
 import "../../utils/Ownable.sol";
 
+<<<<<<< HEAD
+contract BasicERC20 is BasicToken, Ownable {
+=======
 contract BasicERC20 is Ownable {
+>>>>>>> master
 
     string public name;
     string public symbol;

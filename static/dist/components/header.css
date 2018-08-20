@@ -725,3 +725,12 @@ a.ui.inverted.grey.header:hover {
          Site Overrides
 *******************************/
 
+h4.ui.header.headerIndexList {
+  -ms-flex-item-align: center;
+      align-self: center;
+  background: #CCCCCC;
+  max-height: 2em;
+  border-radius: 22px;
+  padding: 0.5em 0.2em;
+  margin-right: 0.4em !important;
+}
