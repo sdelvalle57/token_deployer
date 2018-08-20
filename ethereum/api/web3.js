@@ -9,5 +9,7 @@ if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
     web3 = new Web3(window.web3.currentProvider);
 } else if(env == 'development') {
     web3 = new Web3("http://localhost:"+truffle.networks.development.port);
-} 
+} else {
+    web3 =  new Web3(new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/_ws'));
+}
 export default web3;

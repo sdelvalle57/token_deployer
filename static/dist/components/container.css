@@ -150,20 +150,22 @@
 }
 .ui.container.input {
   width: 750px;
-  top: 50%;
-  left: 50%;
-  position: fixed;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
 }
 .ui.container.contResponse {
   position: absolute;
   max-width: 90% !important;
   color: transparent;
+  overflow: auto;
 }
-.ui.container.contResponse.red {
+.ui.container.red {
   color: #9F3A38;
 }
-.ui.container.contResponse.normal {
+.ui.container.green {
+  color: #21BA45;
+}
+.ui.container.normal {
   color: rgba(0, 0, 0, 0.4);
+}
+.ui.container.verticalStepResponse.normal {
+  overflow: auto;
 }

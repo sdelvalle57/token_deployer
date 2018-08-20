@@ -17,11 +17,12 @@
 
 #summaryCard.ui.cards {
     text-align: center;
-    margin-top: 50px;
+    margin: 1rem;
 }
 
 #summaryCard.ui.cards > .card {
     width: 100%;
+
 }
 
 #basicTokenCards.ui.cards{

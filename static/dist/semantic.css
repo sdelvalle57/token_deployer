@@ -5172,6 +5172,10 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.primary.button.fullWidth {
+  width: 100%;
+}
 /*!
  * # Semantic UI 2.3.3 - Container
  * http://github.com/semantic-org/semantic-ui/
@@ -5340,25 +5344,29 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.container.input {
   width: 750px;
-  top: 50%;
-  left: 50%;
-  position: fixed;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 
 .ui.container.contResponse {
   position: absolute;
   max-width: 90% !important;
   color: transparent;
+  overflow: auto;
 }
 
-.ui.container.contResponse.red {
+.ui.container.red {
   color: #9F3A38;
 }
 
-.ui.container.contResponse.normal {
+.ui.container.green {
+  color: #21BA45;
+}
+
+.ui.container.normal {
   color: rgba(0, 0, 0, 0.4);
+}
+
+.ui.container.verticalStepResponse.normal {
+  overflow: auto;
 }
 /*!
  * # Semantic UI 2.3.3 - Divider
@@ -7730,6 +7738,16 @@ a.ui.inverted.grey.header:hover {
 /*******************************
          Site Overrides
 *******************************/
+
+h4.ui.header.headerIndexList {
+  -ms-flex-item-align: center;
+  align-self: center;
+  background: #CCCCCC;
+  max-height: 2em;
+  border-radius: 22px;
+  padding: 0.5em 0.2em;
+  margin-right: 0.4em !important;
+}
 /*!
  * # Semantic UI 2.3.3 - Icon
  * http://github.com/semantic-org/semantic-ui/
@@ -14821,6 +14839,10 @@ img.ui.bordered.image {
 .ui.input.cardInput {
   width: 100%;
 }
+
+.ui.input.deployStep {
+  width: 140px;
+}
 /*!
  * # Semantic UI 2.3.3 - Label
  * http://github.com/semantic-org/semantic-ui/
@@ -17346,6 +17368,19 @@ ol.ui.horizontal.list li:before,
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.list.listIndex {
+  overflow: auto;
+  max-height: -webkit-fill-available;
+}
+
+.ui.list > .item .header.headerIndexList {
+  display: -webkit-inline-box;
+}
+
+.ui.list > .item > .content.contentIndexList {
+  display: inline-block;
+}
 /*!
  * # Semantic UI 2.3.3 - Loader
  * http://github.com/semantic-org/semantic-ui/
@@ -19101,6 +19136,10 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.padded.segment.ownerIndex {
+  margin-bottom: 70px;
+}
 /*!
  * # Semantic UI 2.3.3 - Step
  * http://github.com/semantic-org/semantic-ui/
@@ -19791,6 +19830,17 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.ordered.steps {
+  bottom: 0;
+  position: fixed;
+  line-height: 0.8em;
+  z-index: 10;
+}
+
+.ui.steps .step > .icon {
+  font-size: 2em;
+}
 /*!
  * # Semantic UI 2.3.3 - Breadcrumb
  * http://github.com/semantic-org/semantic-ui/
@@ -23419,6 +23469,19 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.grid:last-child {
+  margin-bottom: 80px;
+}
+
+.ui.celled.grid.gridIndex {
+  max-height: 40vh;
+  min-height: 22vh;
+}
+
+.ui.celled.grid.lastGridIndex {
+  margin-bottom: 0px;
+}
 /*
  * # Semantic - Menu
  * http://github.com/semantic-org/semantic-ui/
@@ -28992,7 +29055,7 @@ a.ui.card:hover,
 
 #summaryCard.ui.cards {
   text-align: center;
-  margin-top: 50px;
+  margin: 1rem;
 }
 
 #summaryCard.ui.cards > .card {
@@ -31967,7 +32030,6 @@ body.dimmable > .dimmer {
 
 .ui.dimmer.cardDimmer {
   width: -webkit-fill-available;
-  height: 86%;
 }
 /*!
  * # Semantic UI 2.3.3 - Dropdown
