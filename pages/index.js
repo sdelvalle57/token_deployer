@@ -19,6 +19,7 @@ class InsertTokenAddress extends Component {
         factoryOwner: ""
     }
 
+<<<<<<< HEAD
     networkCallback = (response) => {
         const network = response.network;
         let factoryAddress = "0x282388eeeaceacdad61d58743c28aea8ed7f4c59";
@@ -34,6 +35,31 @@ class InsertTokenAddress extends Component {
         const prices = await apiFactoryERC20.getPrices(factoryAddress);
         const factoryOwner = await apiFactoryERC20.getOwner(factoryAddress);
         this.setState({prices, factoryOwner});
+=======
+    onSubmit = async (event) => {
+        event.preventDefault();
+        let { tokenAddress, network } = this.state;
+        tokenAddress = tokenAddress.trim();
+        if(solver.isAddressValid(tokenAddress)) {
+            const summary = await api.getSummary(tokenAddress, network);
+            console.log(summary);
+            typeof summary.name == 'undefined' ?
+                this.setState({ errroMessage: "Contract not found"}) :
+                Router.pushRoute(`/token/view/${tokenAddress}/${network}`)
+        } else {
+            this.setState({ errroMessage: "Not valid eth address"});
+        }
+    }
+
+    renderIndex() {
+        return(
+            <Container className='mainIndex' >
+                <Header as='h1' id='indexHeader' block align='center'>
+                    ERC20 TOKEN INTERFACE
+                </Header> 
+            </Container>
+            );
+>>>>>>> master
     }
 
     isOwner() {
