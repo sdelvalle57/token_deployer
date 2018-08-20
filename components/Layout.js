@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Head from 'next/head'
 import { Container } from 'semantic-ui-react';
+import Favicon from 'react-favicon';
 import web3 from '../ethereum/api/web3';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -88,6 +89,7 @@ class Layout extends Component {
     render() {
         return (
             <Container >
+                <Favicon url="/static/images/favicon.png" />
                 <Head>
                     <link 
                         rel="stylesheet" 
