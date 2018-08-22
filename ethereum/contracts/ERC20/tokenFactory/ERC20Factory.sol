@@ -5,6 +5,7 @@ import "./ERC20FactoryDataHolder.sol";
 import "./ERC20FactoryFundsHolder.sol";
 import "../flavors/BasicERC20.sol";
 import "../flavors/StandardERC20.sol";
+import "../flavors/StandardBurnableERC20.sol";
 import "../../utils/Ownable.sol";
 
 /**
@@ -12,7 +13,7 @@ import "../../utils/Ownable.sol";
  */
 contract ERC20Factory is ERC20FactoryInterface, Ownable  { 
 
-    uint256 constant public VERSION = 1;
+    uint256 constant public VERSION = 2;
 
     ERC20FactoryDataHolder dataHolder; 
     ERC20FactoryFundsHolder fundsHolder;
@@ -44,6 +45,7 @@ contract ERC20Factory is ERC20FactoryInterface, Ownable  {
     }
 
     function createBasicToken(string _name, string _symbol, uint256 _initialSupply) external payable {
+        require(msg.value >= dataHolder.getPrice(0), "Value sent is not enough");
         BasicERC20 token = new BasicERC20(_name, _symbol, _initialSupply);
         _setOwnerhsip(token);
         dataHolder.addBasicToken(msg.sender, address(token));
@@ -58,6 +60,15 @@ contract ERC20Factory is ERC20FactoryInterface, Ownable  {
         StandardERC20 token = new StandardERC20(_name, _symbol, _initialSupply);
         _setOwnerhsip(token);
         dataHolder.addStandardToken(msg.sender, address(token));
+        fundsHolder.addFunds(msg.value); 
+        emit FundAdded(msg.value);
+    }
+
+    function createStandardBurnableToken(string _name, string _symbol, uint256 _initialSupply) external payable {
+        require(msg.value >= dataHolder.getPrice(2), "Value sent is not enough");
+        StandardBurnableERC20 token = new StandardBurnableERC20(_name, _symbol, _initialSupply);
+        _setOwnerhsip(token);
+        dataHolder.addStandardBurnableToken(msg.sender, address(token));
         fundsHolder.addFunds(msg.value); 
         emit FundAdded(msg.value);
     }
