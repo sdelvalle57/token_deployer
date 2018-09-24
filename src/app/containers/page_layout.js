@@ -1,27 +1,34 @@
 import React, {Component} from 'react';
-import { Container } from 'semantic-ui-react';
-
-import Menu from './menu';
-import Footer from '../components/footer';
-import LoginModal from './login_modal';
+import { Container} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 
-import { Router } from '../routes';
+import {checkNetwork} from '../actions/action_network';
+
+import Footer from '../components/footer';
+
 
 
 class PageLayout extends Component {
 
-    componentWillReceiveProps({login}) {
-        if(!login.user.uid) {
-            Router.pushRoute('/');
-        }
+    componentDidMount() {
+        this.setCheckNetworkInterval();
     }
 
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    setCheckNetworkInterval = () => {
+        let {dispatch} = this.props;
+        this.interval = setInterval(() => {
+            dispatch(checkNetwork());
+        }, 2000);
+    }
+
+   
     render() {
         return(
-            <Container className="parent">
-                <LoginModal />
-                <Menu />
+            <Container className='parent'>
                 {this.props.children}
                 <Footer />
             </Container>
@@ -29,9 +36,4 @@ class PageLayout extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    const {login} = state;
-    return {login};
-}
-
-export default connect(mapStateToProps)(PageLayout);
+export default connect(null)(PageLayout);

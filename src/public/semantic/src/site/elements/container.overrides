@@ -2,6 +2,10 @@
          Site Overrides
 *******************************/
 
+.ui.container.parent {
+    width: 100%;
+}
+
 .ui.container.mainIndex {
     padding: 20px;
 }

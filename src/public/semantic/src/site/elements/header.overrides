@@ -9,3 +9,16 @@ h4.ui.header.headerIndexList {
     padding: 0.5em 0.2em;
     margin-right: 0.4em !important;
 }
+
+h1.ui.inverted.header.homebig {
+    font-size: 4em;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 3em;
+  }
+
+  h2.ui.inverted.header.homemedium{
+    font-size: 1.7em;
+    font-weight: 500;
+    margin-top: 1.5em;
+  }
