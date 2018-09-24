@@ -1,0 +1,11 @@
+{
+  "rules": {
+    ".read": "auth != true",
+    ".write": "auth != true",
+    "gmailUsers": {
+      "$uid": {
+        ".write": "auth.token.email_verified == true && auth.token.email.matches(/.*@consensys.net$/)"
+      }
+    }
+  }
+}

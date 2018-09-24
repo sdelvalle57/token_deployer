@@ -1,0 +1,44 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+.ui.cards.tokenCards {
+    display: -webkit-box;
+}
+
+.ui.cards.tokenCards > .card {
+    width: 47%;
+    display: -webkit-box;
+    border-radius: 8px;
+}
+
+.ui.cards.tokenCards > .card > .extra {
+    height: 50px;
+}
+
+#summaryCard.ui.cards {
+    text-align: center;
+    margin: 1rem;
+}
+
+#summaryCard.ui.cards > .card {
+    width: 100%;
+
+}
+
+#basicTokenCards.ui.cards{
+    display: -webkit-box;
+}
+
+
+
+#basicTokenCards.ui.cards > .card > .extra.red {
+    background-color: @negativeBackgroundColor;
+}
+
+#basicTokenCards.ui.cards > .card > .extra.normal {
+    background-color: transparent;
+}
+
+#basicTokenCards.ui.card .dimmer, .ui.cards>.card .dimmer {
+    border-radius: 8px !important;
+}

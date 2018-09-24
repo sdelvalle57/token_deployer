@@ -1,0 +1,11 @@
+/*******************************
+        User Overrides
+*******************************/
+.ui.active.dimmer {
+        display: flex !important;
+}
+
+.ui.dimmer.cardDimmer {
+        width: -webkit-fill-available;
+}
+
