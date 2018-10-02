@@ -1,0 +1,8 @@
+/*******************************
+        Site Overrides
+*******************************/
+.ui.bottom.attached.message.headermessage {
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+}

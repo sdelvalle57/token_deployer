@@ -7,7 +7,9 @@ const initialState = {
     notLogged: true,
     accounts: [],
     message: '',
-    contractError : false
+    contractError : false,
+    factoryAddress : '',
+    web3: {}
 }
 
 export default function(state = initialState, action) {
@@ -24,7 +26,8 @@ export default function(state = initialState, action) {
                 providerNotSet: false,
                 networkNotSet: true,
                 networkId: action.netId,
-                message: action.payload
+                message: action.payload,
+                web3: action.web3
             }
         case NETWORK_ACCOUNTS:
             return {
@@ -34,7 +37,9 @@ export default function(state = initialState, action) {
                 networkId: action.netId,
                 notLogged: action.notLogged,
                 accounts: action.accounts,
-                message: action.payload
+                message: action.payload,
+                factoryAddress: action.factoryAddress,
+                web3: action.web3
             }
         default: return state;
     }

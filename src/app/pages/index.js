@@ -1,16 +1,30 @@
 import React, { Component } from 'react'
-import {Button, Container, Header, Icon} from 'semantic-ui-react';
+import {Container, Header, Message} from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 import PageLayout from '../containers/page_layout';
 import MainHeader from '../containers/main_header';
-
-import { Router } from '../routes';
+import TokenReader from '../containers/token_reader';
 
 class Index extends Component {
 
   static getInitialProps({reduxStore}) {
     return {};
+  }
+
+  renderErrorMessage() {
+    const {contracts} = this.props;
+    if(!!contracts.errorMessage) {
+      return(
+        <Message 
+              className='headermessage'
+              attached='bottom'
+              error 
+              header="Oops!" 
+              content={contracts.errorMessage} />
+      )
+    }
+    return null;
   }
 
   render() {
@@ -28,15 +42,20 @@ class Index extends Component {
               content='Create and manage Tokens on the Rinkeby or Main network'
               inverted
               className='homemedium'/>
+            <TokenReader />
           </Container>
+          {this.renderErrorMessage()}
+          
         </MainHeader>
+
       </PageLayout>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return {};
+  const {contracts} = state;
+  return {contracts};
 }
 
 export default connect(mapStateToProps)(Index);

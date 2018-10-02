@@ -1,4 +1,12 @@
-export const NETWORK_PROVIDER = 'NETWORK_PROVIDER';
-export const NETWORK_ID = 'NETWORK_ID';
 export const NETWORK_ACCOUNTS = 'NETWORK_ACCOUNTS';
+export const NETWORK_ID = 'NETWORK_ID';
+export const NETWORK_PROVIDER = 'NETWORK_PROVIDER';
+
+export const TOKEN_ADDRESS = 'TOKEN_ADDRESS';
+export const TOKEN_ERROR_MESSAGE = 'TOKEN_ERROR_MESSAGE';
+export const TOKEN_LOADING = 'TOKEN_LOADING';
+
+export const SEND_TX = 'SEND_TX';
+
+export const TX_ERROR = 'TX_ERROR';
 

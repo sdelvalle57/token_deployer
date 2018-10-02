@@ -13,8 +13,7 @@
     "build-app": "next build \"src/app/\"",
     "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
     "install-deps": "cd \"dist/functions\" && npm i",
-    "build-semantic": "cd src/public/semantic && gulp build-css build-assets",
-    "watch-semantic": "cd src/public/semantic && npm run build-semantic && gulp watch"
+    "build-semantic": "cd src/app/static/semantic && gulp build-css build-assets"
   },
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.55",
