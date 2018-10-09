@@ -4,6 +4,7 @@
 
 .ui.container.parent {
     width: 100%;
+    margin-bottom: 150px;
 }
 
 .ui.container.mainIndex {
@@ -41,4 +42,13 @@
       overflow: auto;
   }
 
+  .ui.container.deployed {
+      min-height: 150px;
+      text-align: center;
+  }
+
+  .ui.container.notokens {
+    margin-top: 1em;
+    
+}
 

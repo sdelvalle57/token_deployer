@@ -5,10 +5,10 @@ import basicERC20 from '../../ethereum/api/erc20/basicERC20';
 
 
 /* reading functions */
-export async function getSummary(tokenAddress) {
+export async function getSummary(erc20Address) {
   let summary = {};
   try {
-    const token = basicERC20(tokenAddress, web3);
+    const token = basicERC20(erc20Address, web3);
     summary['name'] = await token.methods.name().call();
     summary['symbol'] = await token.methods.symbol().call();
     summary['decimals'] = await token.methods.decimals().call();
@@ -21,21 +21,21 @@ export async function getSummary(tokenAddress) {
   return summary;
 }
 
-export async function totalSupply(tokenAddress) {
-  const token = basicERC20(tokenAddress, web3);
+export async function totalSupply(erc20Address) {
+  const token = basicERC20(erc20Address, web3);
   const totalSupply  = await token.methods.totalSupply().call();
   return totalSupply;
 }
 
-export async function balanceOf(tokenAddress, who) {
-  const token = basicERC20(tokenAddress, web3);
+export async function balanceOf(erc20Address, who) {
+  const token = basicERC20(erc20Address, web3);
   const balance  = await token.methods.balanceOf(who).call();
   return balance;
 }
 
-export async function transfer(tokenAddress, to, value) {
+export async function transfer(erc20Address, to, value) {
   value = solver.convertToWei(value);
-  const token = basicERC20(tokenAddress, web3);
+  const token = basicERC20(erc20Address, web3);
   const method = token.methods.transfer(to, value);
   const response = await sendTx(method);
   return response;

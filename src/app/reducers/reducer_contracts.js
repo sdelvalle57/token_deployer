@@ -1,5 +1,5 @@
 
-import {TOKEN_ADDRESS, TOKEN_ERROR_MESSAGE, TOKEN_LOADING} from '../actions/types';
+import {ERC20_ADDRESS} from '../actions/types';
 
 const initialState = {
     factoryAddress: {
@@ -14,28 +14,16 @@ const initialState = {
             "4": "0x7bbd2895bf740e7771785854ee74ed401e803555"
         }
     },
-    tokenAddress: '',
-    summary: {},
-    errorMessage: '',
-    loading: false
+    erc20Address: ''
 }
 
 export default function(state = initialState, action) {
     switch(action.type) {
-        case TOKEN_ADDRESS:
+        
+        case ERC20_ADDRESS:
             return {
                 ...state,
-                tokenAddress: action.tokenAddress
-            }
-        case TOKEN_ERROR_MESSAGE: 
-            return {
-                ...state,
-                errorMessage: action.message
-            }
-        case TOKEN_LOADING:
-            return {
-                ...state,
-                loading: action.loading
+                erc20Address: action.address
             }
         default: return state;
     }

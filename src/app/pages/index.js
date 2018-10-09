@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import {Container, Header, Message} from 'semantic-ui-react';
+import {Container, Header, Message, Grid} from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 import PageLayout from '../containers/page_layout';
 import MainHeader from '../containers/main_header';
 import TokenReader from '../containers/token_reader';
+import MyDeployedERC20 from '../containers/my_deployed_erc20';
 
 class Index extends Component {
 
@@ -13,15 +14,15 @@ class Index extends Component {
   }
 
   renderErrorMessage() {
-    const {contracts} = this.props;
-    if(!!contracts.errorMessage) {
+    const {summary} = this.props;
+    if(!!summary.error) {
       return(
         <Message 
               className='headermessage'
               attached='bottom'
               error 
               header="Oops!" 
-              content={contracts.errorMessage} />
+              content={summary.message} />
       )
     }
     return null;
@@ -47,6 +48,22 @@ class Index extends Component {
           {this.renderErrorMessage()}
           
         </MainHeader>
+        <Grid 
+          celled='internally'
+          container 
+          className='gridmain' 
+          stackable 
+          verticalAlign='middle'>
+          <Grid.Row>
+            <Grid.Column width={5}>
+              <MyDeployedERC20 />
+            </Grid.Column>
+            <Grid.Column floated='right' width={11}>
+
+            </Grid.Column>
+          </Grid.Row>
+       
+      </Grid>
 
       </PageLayout>
     )
@@ -54,8 +71,8 @@ class Index extends Component {
 }
 
 function mapStateToProps(state) {
-  const {contracts} = state;
-  return {contracts};
+  const {erc20: {summary}} = state;
+  return {summary};
 }
 
 export default connect(mapStateToProps)(Index);

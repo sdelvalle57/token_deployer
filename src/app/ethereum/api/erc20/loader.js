@@ -16,12 +16,10 @@ export function ownership(address, web3) {
     return new web3.eth.Contract(Ownership.abi, address);
 }
 
-
-
-export function basicERC20(tokenAddress, web3) {
-    return new web3.eth.Contract(BasicERC20.abi, tokenAddress);
+export function basicERC20(erc20Address, web3) {
+    return new web3.eth.Contract(BasicERC20.abi, erc20Address);
 }
 
-export function standardERC20(tokenAddress, web3) {
-    return new web3.eth.Contract(StandardERC20.abi, tokenAddress);
+export function standardERC20(erc20Address, web3) {
+    return new web3.eth.Contract(StandardERC20.abi, erc20Address);
 }

@@ -13,3 +13,7 @@
 .ui.celled.grid.lastGridIndex {
     margin-bottom: 0px;
 }
+
+.ui.grid.container.gridmain {
+    width: 98%;
+}

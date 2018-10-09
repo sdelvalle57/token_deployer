@@ -1,42 +1,54 @@
 import React, {Component} from 'react';
-import { Container, Form, Input, Label, Message, List } from 'semantic-ui-react';
+import { Container, Form, Input, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 import {isAddressValid} from '../helpers/solver';
 
-import {setErrorMessage, setTokenAddress, setLoading} from '../actions/action_contracts';
-import {erc20Summary} from '../actions/action_erc20';
+import {setERC20Address} from '../actions/action_contracts';
+import {erc20Summary, setERC20SummaryError} from '../actions/action_erc20';
 
 class TokenReader extends Component {
     
 
-    onSubmit = async (event) => {
-        const {dispatch, network, contracts:{tokenAddress}} = this.props;
+    onSubmit = (event) => {
+        const {dispatch, network, contracts:{erc20Address}} = this.props;
         if(event != null) event.preventDefault();
-        dispatch(setErrorMessage(''));
+        
 
         if(network.providerNotSet || network.networkNotSet) {
-            dispatch(setErrorMessage(network.message));
+            dispatch(setERC20SummaryError(network.message));
             return;
         }
 
-        if(isAddressValid(tokenAddress)) {
-            dispatch(setLoading(true));
+        if(isAddressValid(erc20Address)) {
             dispatch(erc20Summary());
             /*
-            const summary = await apiBasicERC20.getSummary(tokenAddress, network.networkId);
-            typeof summary.name == 'undefined' ?
                 this.setState({ errroMessage: "Contract not found"}) : 
-                Router.pushRoute(`/token/view/${tokenAddress}`)
+                Router.pushRoute(`/token/view/${erc20Address}`)
             this.setState({loading : false})
             */
-        } else {
-            //this.setState({ errroMessage: "Not valid eth address"});
-        }
+        } else dispatch(setERC20SummaryError("Not valid eth address"));
+        
+    }
+
+    onChange = (event) => {
+        const {dispatch} = this.props;
+        dispatch(setERC20Address(event.target.value));
+        console.log(event.target.value)
+        if(isAddressValid(event.target.value))
+            dispatch(erc20Summary());
+    }
+
+    onTryClick = (tryAddress) => {
+        const {dispatch} = this.props;
+        dispatch(setERC20Address(tryAddress));
+        if(isAddressValid(tryAddress))
+            dispatch(erc20Summary());
+        else dispatch(setERC20SummaryError("Not valid eth address"));
     }
 
     renderLabel() {
-        const {contracts, network: {networkId}} = this.props;
+        const {contracts, network: {networkId}, dispatch} = this.props;
         if(networkId == "1" || networkId == "4"){
             const tryAddress = contracts.tryAddress.erc20[networkId];
             return (
@@ -45,6 +57,7 @@ class TokenReader extends Component {
                     basic 
                     className="tryThis" 
                     pointing 
+                    onClick = {this.onTryClick.bind(this, tryAddress)}
                     content = {`Try This: ${tryAddress}`} /> 
                 )
         }
@@ -52,7 +65,7 @@ class TokenReader extends Component {
     }
 
     renderInput() {
-        const {contracts, network: {networkId}, dispatch} = this.props;
+        const {contracts, network: {networkId}, dispatch, loading} = this.props;
 
         const disabled = networkId != "1" && networkId != "4";
         const placeholder = disabled ? "Choose the correct network" : "0x...  Enter the ERC20 Token address";
@@ -64,15 +77,13 @@ class TokenReader extends Component {
                         <Form.Field>
                             <Input 
                                 disabled = {disabled}
-                                loading = {contracts.loading}
+                                loading = {loading}
                                 className='index' 
                                 action={{ icon: 'search' }} 
                                 actionPosition= 'left'
                                 placeholder={placeholder}
-                                value={contracts.tokenAddress}
-                                onChange={event => {
-                                    dispatch(setTokenAddress(event.target.value));
-                                }}
+                                value={contracts.erc20Address}
+                                onChange={this.onChange}
                                 />
                         </Form.Field>
                         {this.renderLabel()}
@@ -92,8 +103,8 @@ class TokenReader extends Component {
 }
 
 function mapStateToProps(state) {
-    const { network, contracts } = state;
-    return {network, contracts};
+    const { network, contracts, erc20: {summary:{loading}} } = state;
+    return {network, contracts, loading};
 }
 
 

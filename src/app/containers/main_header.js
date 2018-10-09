@@ -1,17 +1,10 @@
 import React, {Component } from 'react';
-import { Menu, Visibility, Segment } from 'semantic-ui-react';
+import { Visibility, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 import MainMenu from './menu';
 
 import {Router} from '../routes';
-
-const style = {
-  background: 'gray',
-  color: 'white',
-  padding: '1em',
-  borderRadius: '6px'
-}
 
 class Header extends Component {
 
