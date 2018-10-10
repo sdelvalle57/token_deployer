@@ -1,5 +1,6 @@
 import web3 from '../../ethereum/api/web3';
 import erc20FactoryAt from '../../ethereum/api/erc20/erc20Factory';
+import erc20DataHolder from '../../ethereum/api/erc20/erc20DataHolder'
 import sendTx from '../web3TxHandler';
 import sendTxWithValue from '../web3TxValueHandler';
 import solver from '../solver';
@@ -9,7 +10,10 @@ async function getPrices(factoryAddress) {
   let prices = [];
   for(let j = 0; j < 2; j++) {
     const factory = erc20FactoryAt(factoryAddress, web3);
-    let price = await factory.methods.getPrice(j).call();
+    const dataHolderAddress = await factory.methods.getDataHolder().call();
+    const dataHolder = erc20DataHolder(dataHolderAddress, web3);
+
+    let price = await dataHolder.methods.getPrice(j).call();
     price = solver.convertToEther(price);
     prices.push(price);
   }
@@ -24,7 +28,9 @@ async function getOwner(factoryAddress) {
 
 async function getContracts(factoryAddress, who) {
   const factory = erc20FactoryAt(factoryAddress, web3);
-  const contracts = await factory.methods.getContracts(who).call();
+  const dataHolderAddress = await factory.methods.getDataHolder().call();
+  const dataHolder = erc20DataHolder(dataHolderAddress, web3);
+  const contracts = await dataHolder.methods.getContracts(who).call();
   return contracts; 
 }
 
