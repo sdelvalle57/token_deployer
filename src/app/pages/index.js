@@ -21,7 +21,7 @@ class InsertTokenAddress extends Component {
 
     networkCallback = (response) => {
         const network = response.network;
-        let factoryAddress = "0x282388eeeaceacdad61d58743c28aea8ed7f4c59";
+        let factoryAddress = "0x83a4932c173fa38580859f6823584b4dc841d5fe";
         if(network.networkId == "1") 
             factoryAddress = "0x8198bc0ea73e0c0377e346e227ba9854b088e5eb";
         this.setState({network, factoryAddress});
